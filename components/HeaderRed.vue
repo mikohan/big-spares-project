@@ -15,7 +15,7 @@
                 />
               </svg>
             </button>
-            <a class="mobile-header__logo" href="">
+            <nuxt-link class="mobile-header__logo" to="/">
               <!-- mobile-logo -->
               <svg xmlns="http://www.w3.org/2000/svg" width="130" height="20">
                 <path
@@ -48,7 +48,7 @@
                 ></path>
               </svg>
               <!-- mobile-logo / end -->
-            </a>
+            </nuxt-link>
             <div class="mobile-header__search mobile-search">
               <form class="mobile-search__body">
                 <input
@@ -178,7 +178,7 @@
               Call Us: (800) 060-0730
             </div>
             <div class="topbar__item-text">
-              <a class="topbar__link" href="about-us.html">About Us</a>
+              <nuxt-link class="topbar__link" to="about">About Us</nuxt-link>
             </div>
             <div class="topbar__item-text">
               <a class="topbar__link" href="contact-us-v1.html">Contacts</a>
@@ -1943,9 +1943,9 @@
                         </div>
                       </li>
                       <li class="menu__item">
-                        <a href="shop-list.html" class="menu__link">
-                          Shop List
-                        </a>
+                        <nuxt-link to="/contacts" class="menu__link">
+                          Контакты
+                        </nuxt-link>
                       </li>
                       <li class="menu__item">
                         <a href="shop-table.html" class="menu__link">
@@ -2321,7 +2321,7 @@
           </div>
         </div>
         <div class="header__logo">
-          <a href="index.html" class="logo">
+          <nuxt-link to="/" class="logo">
             <div class="logo__slogan">
               Auto parts for Cars, trucks and motorcycles
             </div>
@@ -2362,7 +2362,7 @@
               </svg>
               <!-- logo / end -->
             </div>
-          </a>
+          </nuxt-link>
         </div>
         <div class="header__search">
           <div class="search">
