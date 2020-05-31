@@ -13,6 +13,10 @@ export default {
   components: {
     HeaderRed,
     FooterRed
+  },
+
+  mounted() {
+    
   }
 }
 </script>

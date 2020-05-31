@@ -1793,11 +1793,11 @@
                   <div class="main-menu__submenu">
                     <ul class="menu">
                       <li class="menu__item menu__item--has-submenu">
-                        <a
-                          href="category-4-columns-sidebar.html"
+                        <nuxt-link
+                          to="/shop"
                           class="menu__link"
                         >
-                          Category
+                          Магазин
                           <span class="menu__arrow">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -1809,7 +1809,7 @@
                               />
                             </svg>
                           </span>
-                        </a>
+                        </nuxt-link>
                         <div class="menu__submenu">
                           <ul class="menu">
                             <li class="menu__item">
