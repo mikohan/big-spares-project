@@ -1653,8 +1653,10 @@
                     <div class="view-options__layout layout-switcher">
                       <div class="layout-switcher__list">
                         <button
+                        @click="changeLayout('grid')"
                           type="button"
-                          class="layout-switcher__button layout-switcher__button--active"
+                          class="layout-switcher__button"
+                          :class="{ 'layout-switcher__button--active':dataLayout === 'grid' }"
                           data-layout="grid"
                           data-with-features="false"
                         >
@@ -1667,7 +1669,7 @@
                             />
                           </svg>
                         </button>
-                        <button
+                        <!-- <button
                           type="button"
                           class="layout-switcher__button"
                           data-layout="grid"
@@ -1679,10 +1681,12 @@
 	v14.4C7,15.6,6.6,16,6.2,16H0.8C0.4,16,0,15.6,0,15.2L0,0.8C0,0.4,0.4,0,0.8,0l5.4,0C6.6,0,7,0.4,7,0.8z"
                             />
                           </svg>
-                        </button>
+                        </button> -->
                         <button
+                        @click="changeLayout('list')"
                           type="button"
                           class="layout-switcher__button"
+                          :class="{ 'layout-switcher__button--active':dataLayout === 'list' }"
                           data-layout="list"
                           data-with-features="false"
                         >
@@ -1694,8 +1698,10 @@
                           </svg>
                         </button>
                         <button
+                        @click="changeLayout('table')"
                           type="button"
                           class="layout-switcher__button"
+                          :class="{ 'layout-switcher__button--active':dataLayout === 'table' }"
                           data-layout="table"
                           data-with-features="false"
                         >
@@ -1778,7 +1784,7 @@
                 </div>
                 <div
                   class="products-view__list products-list products-list--grid--4"
-                  data-layout="grid"
+                  :data-layout="dataLayout"
                   data-with-features="false"
                 >
                   <div class="products-list__head">
@@ -5392,11 +5398,21 @@ export default {
 
   data() {
     return {
-      dataLayout: 'grid',
+      dataLayout: 'grid'
     }
   },
 
   methods: {
+    changeLayout(type) {
+      this.dataLayout = type
+      if (type === 'grid') {
+        this.actveLayout = true
+      } else if (type === 'list') {
+        this.actveLayout = true
+      } else if (type === 'table') {
+        this.actveLayout = true
+      }
+    }
 
   },
 
@@ -5456,33 +5472,33 @@ export default {
         /*
     // .layout-switcher
     */
-      $(function() {
-        $('.layout-switcher__button').on('click', function() {
-          const layoutSwitcher = $(this).closest('.layout-switcher')
-          const productsView = $(this).closest('.products-view')
-          const productsList = productsView.find('.products-list')
+      // $(function() {
+      //   $('.layout-switcher__button').on('click', function() {
+      //     const layoutSwitcher = $(this).closest('.layout-switcher')
+      //     const productsView = $(this).closest('.products-view')
+      //     const productsList = productsView.find('.products-list')
 
-          // console.log(layoutSwitcher)
-          // console.log(productsView)
-          console.log(productsList)
+      //     // console.log(layoutSwitcher)
+      //     // console.log(productsView)
+      //     console.log(productsList)
           
 
-          layoutSwitcher
-            .find('.layout-switcher__button')
-            .removeClass('layout-switcher__button--active')
-            .removeAttr('disabled')
+      //     layoutSwitcher
+      //       .find('.layout-switcher__button')
+      //       .removeClass('layout-switcher__button--active')
+      //       .removeAttr('disabled')
 
-          $(this)
-            .addClass('layout-switcher__button--active')
-            .attr('disabled', '')
+      //     $(this)
+      //       .addClass('layout-switcher__button--active')
+      //       .attr('disabled', '')
 
-          productsList.attr('data-layout', $(this).attr('data-layout'))
-          productsList.attr(
-            'data-with-features',
-            $(this).attr('data-with-features')
-          )
-        })
-      })
+      //     productsList.attr('data-layout', $(this).attr('data-layout'))
+      //     productsList.attr(
+      //       'data-with-features',
+      //       $(this).attr('data-with-features')
+      //     )
+      //   })
+      // })
     })(jQuery)
   }
 }
