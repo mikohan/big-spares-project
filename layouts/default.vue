@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import HeaderRed from '~/components/HeaderRed'
+import HeaderRed from '~/components/header/HeaderRed'
 import FooterRed from '~/components/FooterRed'
 export default {
   components: {

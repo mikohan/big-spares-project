@@ -37,7 +37,7 @@ export default {
       { src: '/vendor/photoswipe/photoswipe-ui-default.min.js', body: true },
       { src: '/vendor/select2/js/select2.min.js', body: true },
       { src: '/js/number.js', body: true },
-      { src: '/js/main.js', body: true },
+      // { src: '/js/main.js', body: true },
     ]
   },
   /*

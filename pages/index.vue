@@ -8107,13 +8107,32 @@
     <div class="block-space block-space--layout--before-footer"></div>
   </div>
   <!-- site__body / end -->
+  
 </template>
 
 <script>
 import { mainPageJq } from '~/helpers/homePageJquery'
 export default {
+
+    computed: {
+        loadedCategories() {
+          const categories = this.$store.getters.getCategoriesFirstLevel
+            return categories
+        }
+    },
+
+async fetch(context) {
+    if (context.store.getters.loadedCategories.length === 0){
+        await context.store.dispatch('fetchCategoriesFirstLevel')
+    }
+},
+
+
   mounted() {
+      //importing all JQery functions here
+      // it need to be changed to vue later on
       mainPageJq()
+      console.log(this.loadedCategories)
   }
 }
 </script>
