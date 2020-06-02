@@ -94,6 +94,19 @@ export const departments = function () {
           currentItem = null;
         }
       });
+      // added by me on click event
+      $('.departments__body').on('click', function () {
+        if (currentItem) {
+          const megamenu = currentItem.data('megamenu');
+
+          if (megamenu) {
+            megamenu.removeClass('departments__megamenu--open');
+          }
+
+          currentItem.removeClass('departments__item--hover');
+          currentItem = null;
+        }
+      });
     });
 
   })(jQuery);

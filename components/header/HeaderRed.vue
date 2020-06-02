@@ -244,27 +244,27 @@
               </button>
               <div class="topbar__menu-body">
                 <a class="topbar__menu-item" href="#">
-                  <img src="images/languages/language-1.png" alt="" /><span
+                  <img :src="require('~/static/images/languages/language-1.png')" alt="" /><span
                     >English</span
                   >
                 </a>
                 <a class="topbar__menu-item" href="#">
-                  <img src="images/languages/language-2.png" alt="" /><span
+                  <img :src="require('~/static/images/languages/language-2.png')" alt="" /><span
                     >French</span
                   >
                 </a>
                 <a class="topbar__menu-item" href="#">
-                  <img src="images/languages/language-3.png" alt="" /><span
+                  <img :src="require('~/static/images/languages/language-3.png')" alt="" /><span
                     >German</span
                   >
                 </a>
                 <a class="topbar__menu-item" href="#">
-                  <img src="images/languages/language-4.png" alt="" /><span
+                  <img :src="require('~/static/images/languages/language-4.png')" alt="" /><span
                     >Russian</span
                   >
                 </a>
                 <a class="topbar__menu-item" href="#">
-                  <img src="images/languages/language-5.png" alt="" /><span
+                  <img :src="require('~/static/images/languages/language-5.png')" alt="" /><span
                     >Italian</span
                   >
                 </a>
@@ -381,7 +381,7 @@
                   <div class="suggestions__group-content">
                     <a class="suggestions__item suggestions__product" href="">
                       <div class="suggestions__product-image">
-                        <img src="images/products/product-2-40x40.jpg" alt="" />
+                        <img :src="require('~/static/images/products/product-2-40x40.jpg')" alt="" />
                       </div>
                       <div class="suggestions__product-info">
                         <div class="suggestions__product-name">
@@ -418,7 +418,7 @@
                     </a>
                     <a class="suggestions__item suggestions__product" href="">
                       <div class="suggestions__product-image">
-                        <img src="images/products/product-3-40x40.jpg" alt="" />
+                        <img :src="require('~/static/images/products/product-3-40x40.jpg')" alt="" />
                       </div>
                       <div class="suggestions__product-info">
                         <div class="suggestions__product-name">
@@ -451,7 +451,7 @@
                     </a>
                     <a class="suggestions__item suggestions__product" href="">
                       <div class="suggestions__product-image">
-                        <img src="images/products/product-4-40x40.jpg" alt="" />
+                        <img :src="require('~/static/images/products/product-4-40x40.jpg')" alt="" />
                       </div>
                       <div class="suggestions__product-info">
                         <div class="suggestions__product-name">
@@ -776,7 +776,7 @@
                 <div class="account-menu__divider"></div>
                 <a href="" class="account-menu__user">
                   <div class="account-menu__user-avatar">
-                    <img src="images/avatars/avatar-4.jpg" alt="" />
+                    <img :src="require('~/static/images/avatars/avatar-4.jpg')" alt="" />
                   </div>
                   <div class="account-menu__user-info">
                     <div class="account-menu__user-name">Ryan Ford</div>
@@ -823,7 +823,7 @@
                   <li class="dropcart__item">
                     <div class="dropcart__item-image">
                       <a href="product-full.html">
-                        <img src="images/products/product-4-70x70.jpg" alt="" />
+                        <img :src="require('~/static/images/products/product-4-70x70.jpg')" alt="" />
                       </a>
                     </div>
                     <div class="dropcart__item-info">
@@ -859,7 +859,7 @@
                   <li class="dropcart__item">
                     <div class="dropcart__item-image">
                       <a href="product-full.html">
-                        <img src="images/products/product-2-70x70.jpg" alt="" />
+                        <img :src="require('~/static/images/products/product-2-70x70.jpg')" alt="" />
                       </a>
                     </div>
                     <div class="dropcart__item-info">
@@ -891,7 +891,7 @@
                   <li class="dropcart__item">
                     <div class="dropcart__item-image">
                       <a href="product-full.html">
-                        <img src="images/products/product-5-70x70.jpg" alt="" />
+                        <img :src="require('~/static/images/products/product-5-70x70.jpg')" alt="" />
                       </a>
                     </div>
                     <div class="dropcart__item-info">

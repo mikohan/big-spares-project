@@ -8113,26 +8113,26 @@
 <script>
 import { mainPageJq } from '~/helpers/homePageJquery'
 export default {
+// computed: {
+//     categories() {
+//       const categories = this.$store.getters.getCategoriesFirstLevel
+//       return categories
+//     }
+//   },
 
-    computed: {
-        loadedCategories() {
-          const categories = this.$store.getters.getCategoriesFirstLevel
-            return categories
-        }
-    },
-
-async fetch(context) {
-    if (context.store.getters.loadedCategories.length === 0){
-        await context.store.dispatch('fetchCategoriesFirstLevel')
-    }
-},
+//   async fetch(context) {
+//     if (context.store.getters.getCategoriesFirstLevel.length === 0) {
+//       await context.store.dispatch('fetchCategoriesFirstLevel')
+//       console.log('in fetch')
+//     }
+//   },
+   
 
 
   mounted() {
       //importing all JQery functions here
       // it need to be changed to vue later on
       mainPageJq()
-      console.log(this.loadedCategories)
   }
 }
 </script>

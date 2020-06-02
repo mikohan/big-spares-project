@@ -14,6 +14,7 @@ export default {
     HeaderRed,
     FooterRed
   },
+  
 
   mounted() {
     
