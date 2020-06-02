@@ -105,9 +105,14 @@ export const departments = function () {
 
           currentItem.removeClass('departments__item--hover');
           currentItem = null;
+          $('.departments').removeClass('departments--open')
         }
       });
     });
+
+    $('.departments__item').on('click', function() {
+      $('.departments').removeClass('departments--open')
+    })
 
   })(jQuery);
 }
