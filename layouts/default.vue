@@ -1,26 +1,24 @@
 <template>
   <div>
-    <HeaderRed />
+    <HeaderBlue />
     <nuxt />
     <FooterRed />
   </div>
 </template>
 
 <script>
-import HeaderRed from '~/components/header/HeaderRed'
+// import HeaderRed from '~/components/header/HeaderRed'
+import HeaderBlue from '~/components/header/HeaderBlue'
 import FooterRed from '~/components/FooterRed'
 export default {
   components: {
-    HeaderRed,
+    // HeaderRed,
+    HeaderBlue,
     FooterRed
   },
-  
 
-  mounted() {
-    
-  }
+  mounted() {}
 }
 </script>
 
-<style>
-</style>
+<style></style>

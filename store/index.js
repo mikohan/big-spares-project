@@ -28,7 +28,7 @@ export const actions = {
         vuexContext.commit('setCategoriesFirstLevel', data.results)
       })
       .catch(e => {
-        console.log('Error in State Has Occured', e.message)
+        console.error('Error in State Has Occured', e.message)
       })
   },
   fetchCategories(vuexContext, context) {
@@ -47,7 +47,7 @@ export const actions = {
         vuexContext.commit('setCategoriesFirstLevel', data.results)
       })
       .catch(e => {
-        console.log('Error in State Has Occured', e.message)
+        console.error('Error in State Has Occured', e.message)
       })
   }
 }

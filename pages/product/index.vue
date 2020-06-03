@@ -228,6 +228,7 @@
                       </div>
                       <div class="product__meta">
                         <table>
+                          <tbody>
                           <tr>
                             <th>SKU</th>
                             <td>201902-0057</td>
@@ -244,6 +245,7 @@
                             <th>Vendor code</th>
                             <td>BDX-750Z370-S</td>
                           </tr>
+                          </tbody>
                         </table>
                       </div>
                     </div>
@@ -2706,10 +2708,10 @@
 </template>
 
 <script>
-import { jq } from '~/helpers/mainJquery'
+import { productPage } from '~/helpers/productPage'
 export default {
   mounted() {
-    jq()
+   productPage()
   }
 }
 </script>

@@ -23,8 +23,9 @@ export default {
       { rel: 'stylesheet', href: '/vendor/photoswipe/photoswipe.css' },
       { rel: 'stylesheet', href: '/vendor/photoswipe/default-skin/default-skin.css' },
       { rel: 'stylesheet', href: '/vendor/select2/css/select2.min.css' },
-      { rel: 'stylesheet', href: '/css/style.css' },
-      { rel: 'stylesheet', href: '/css/style.header-spaceship-variant-one.css', media: '(min-width: 1200px)' },
+      { rel: 'stylesheet', href: '/css/style_blue.css' },
+      // { rel: 'stylesheet', href: '/css/style.header-spaceship-variant-one_blue.css', media: '(min-width: 1200px)' },
+      { rel: 'stylesheet', href: '/css/style.header-classic-variant-one_blue.css', media: '(min-width: 1200px)' },
       { rel: 'stylesheet', href: '/css/style.mobile-header-variant-one.css', media: '(max-width: 1199px)' },
       { rel: 'stylesheet', href: '/vendor/fontawesome/css/all.min.css' },
     ],
@@ -49,6 +50,7 @@ export default {
   ** Global CSS
   */
   css: [
+    '~/assets/scss/main.scss'
   ],
   /*
   ** Plugins to load before mounting the App

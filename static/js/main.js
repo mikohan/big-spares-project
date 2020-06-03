@@ -1054,52 +1054,52 @@
     /*
     // header vehicle
     */
-    $(function () {
-        const input = $('.search__input');
-        const suggestions = $('.search__dropdown--suggestions');
-        const vehiclePicker = $('.search__dropdown--vehicle-picker');
-        const vehiclePickerButton = $('.search__button--start');
+    // $(function () {
+    //     const input = $('.search__input');
+    //     const suggestions = $('.search__dropdown--suggestions');
+    //     const vehiclePicker = $('.search__dropdown--vehicle-picker');
+    //     const vehiclePickerButton = $('.search__button--start');
 
-        input.on('focus', function() {
-            suggestions.addClass('search__dropdown--open');
-        });
-        input.on('blur', function() {
-            suggestions.removeClass('search__dropdown--open');
-        });
+    //     input.on('focus', function() {
+    //         suggestions.addClass('search__dropdown--open');
+    //     });
+    //     input.on('blur', function() {
+    //         suggestions.removeClass('search__dropdown--open');
+    //     });
 
-        vehiclePickerButton.on('click', function() {
-            vehiclePickerButton.toggleClass('search__button--hover');
-            vehiclePicker.toggleClass('search__dropdown--open');
-        });
+    //     vehiclePickerButton.on('click', function() {
+    //         vehiclePickerButton.toggleClass('search__button--hover');
+    //         vehiclePicker.toggleClass('search__dropdown--open');
+    //     });
 
-        vehiclePicker.on('transitionend', function(event) {
-            if (event.originalEvent.propertyName === 'visibility' && vehiclePicker.is(event.target)) {
-                vehiclePicker.find('.vehicle-picker__panel:eq(0)').addClass('vehicle-picker__panel--active');
-                vehiclePicker.find('.vehicle-picker__panel:gt(0)').removeClass('vehicle-picker__panel--active');
-            }
-            if (event.originalEvent.propertyName === 'height' && vehiclePicker.is(event.target)) {
-                vehiclePicker.css('height', '');
-            }
-        });
+    //     vehiclePicker.on('transitionend', function(event) {
+    //         if (event.originalEvent.propertyName === 'visibility' && vehiclePicker.is(event.target)) {
+    //             vehiclePicker.find('.vehicle-picker__panel:eq(0)').addClass('vehicle-picker__panel--active');
+    //             vehiclePicker.find('.vehicle-picker__panel:gt(0)').removeClass('vehicle-picker__panel--active');
+    //         }
+    //         if (event.originalEvent.propertyName === 'height' && vehiclePicker.is(event.target)) {
+    //             vehiclePicker.css('height', '');
+    //         }
+    //     });
 
-        $(document).on('click', function (event) {
-            if (!$(event.target).closest('.search__dropdown--vehicle-picker, .search__button--start').length) {
-                vehiclePickerButton.removeClass('search__button--hover');
-                vehiclePicker.removeClass('search__dropdown--open');
-            }
-        });
+    //     $(document).on('click', function (event) {
+    //         if (!$(event.target).closest('.search__dropdown--vehicle-picker, .search__button--start').length) {
+    //             vehiclePickerButton.removeClass('search__button--hover');
+    //             vehiclePicker.removeClass('search__dropdown--open');
+    //         }
+    //     });
 
-        $('.vehicle-picker [data-to-panel]').on('click', function(event) {
-            event.preventDefault();
+    //     $('.vehicle-picker [data-to-panel]').on('click', function(event) {
+    //         event.preventDefault();
 
-            const toPanel = $(this).data('to-panel');
-            const currentPanel = vehiclePicker.find('.vehicle-picker__panel--active');
-            const nextPanel = vehiclePicker.find('[data-panel="' + toPanel + '"]');
+    //         const toPanel = $(this).data('to-panel');
+    //         const currentPanel = vehiclePicker.find('.vehicle-picker__panel--active');
+    //         const nextPanel = vehiclePicker.find('[data-panel="' + toPanel + '"]');
 
-            currentPanel.removeClass('vehicle-picker__panel--active');
-            nextPanel.addClass('vehicle-picker__panel--active');
-        });
-    });
+    //         currentPanel.removeClass('vehicle-picker__panel--active');
+    //         nextPanel.addClass('vehicle-picker__panel--active');
+    //     });
+    // });
 
     /*
     // .block-sale

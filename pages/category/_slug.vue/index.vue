@@ -108,7 +108,6 @@ export default {
   computed: {
     getCategory() {
       const categories = this.$store.getters.getCatBySlug('vozdushnaja-sistema')
-      console.log(categories)
       return categories
     }
   },
