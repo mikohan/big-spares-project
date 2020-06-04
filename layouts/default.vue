@@ -1,19 +1,27 @@
 <template>
   <div>
-    <HeaderBlue />
+    <HeaderComponent />
     <nuxt />
     <FooterRed />
   </div>
 </template>
 
 <script>
-// import HeaderRed from '~/components/header/HeaderRed'
-import HeaderBlue from '~/components/header/HeaderBlue'
+import { headerType } from '../config.logic/header.loader.js'
+const HeaderComponent = () => {
+  if (headerType.component === 'classic') {
+    return import('~/components/header/classic/HeaderBlue')
+  } else {
+    return import ('~/components/header/spaceship/HeaderRed')
+  }
+}
+
+
 import FooterRed from '~/components/FooterRed'
 export default {
   components: {
     // HeaderRed,
-    HeaderBlue,
+    HeaderComponent,
     FooterRed
   },
 

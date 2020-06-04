@@ -1,4 +1,4 @@
-
+import { headerType } from './config.logic/header.loader'
 export default {
   mode: 'universal',
   /*
@@ -23,10 +23,9 @@ export default {
       { rel: 'stylesheet', href: '/vendor/photoswipe/photoswipe.css' },
       { rel: 'stylesheet', href: '/vendor/photoswipe/default-skin/default-skin.css' },
       { rel: 'stylesheet', href: '/vendor/select2/css/select2.min.css' },
-      { rel: 'stylesheet', href: '/css/style_blue.css' },
-      // { rel: 'stylesheet', href: '/css/style.header-spaceship-variant-one_blue.css', media: '(min-width: 1200px)' },
-      { rel: 'stylesheet', href: '/css/style.header-classic-variant-one_blue.css', media: '(min-width: 1200px)' },
-      { rel: 'stylesheet', href: '/css/style.mobile-header-variant-one.css', media: '(max-width: 1199px)' },
+      { rel: 'stylesheet', href: `/css/style_${headerType.color}.css` },
+      { rel: 'stylesheet', href: `/css/style.header-${headerType.css}-variant-one_${headerType.color}.css`, media: '(min-width: 1200px)' },
+      { rel: 'stylesheet', href: `/css/style.mobile-header-variant-one_${headerType.color}.css`, media: '(max-width: 1199px)' },
       { rel: 'stylesheet', href: '/vendor/fontawesome/css/all.min.css' },
     ],
     script: [
@@ -45,7 +44,7 @@ export default {
   ** Customize the progress-bar color
   */
   // loading: { color: 'red', height: '5px' },
-  loading: { color: '#37f', throttle: 0,  height: '3px' },
+  loading: { color: '#FF1493', throttle: 0,  height: '3px' },
   /*
   ** Global CSS
   */

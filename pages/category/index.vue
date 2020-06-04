@@ -84,7 +84,7 @@
                     class="categories-list__item"
                     v-show="cat.some_count != 0"
                   >
-                    <a href="">
+                    <nuxt-link :to="`/category/${cat.slug}`">
                       <img
                         src="/images/categories/category-1-200x200.jpg"
                         alt=""
@@ -92,7 +92,7 @@
                       <div class="categories-list__item-name">
                         {{ cat.name }}
                       </div>
-                    </a>
+                    </nuxt-link>
                     <div class="categories-list__item-products">
                       {{ cat.some_count }} Products
                     </div>
