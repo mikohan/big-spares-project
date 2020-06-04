@@ -1,5 +1,5 @@
 // settings for header
-const header = 'spaceship' // Variants 'spaceship' : 'classic'
+const header = 'classic' // Variants 'spaceship' : 'classic'
 const color = 'blue' // Variants 'red' : 'blue'
 
 // ad some other settings

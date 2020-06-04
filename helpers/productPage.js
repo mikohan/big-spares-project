@@ -18,8 +18,8 @@ export const productPage = function () {
 
 
     /*
-       // .product-gallery
-       */
+     // .product-gallery
+     */
     const initProductGallery = function (element, layout) {
       layout = layout !== undefined ? layout : 'standard';
 
@@ -291,19 +291,19 @@ export const productPage = function () {
           timer = setTimeout(function () {
             let items = block.find('.owl-carousel .owl-item:not(".cloned") .block-products-carousel__column');
 
-                    /*** this is ONLY_FOR_DEMO! / start */
-                    /**/ const itemsArray = items.get();
-                    /**/ const newItemsArray = [];
-                    /**/
-                    /**/ while (itemsArray.length > 0) {
-                        /**/     const randomIndex = Math.floor(Math.random() * itemsArray.length);
-                        /**/     const randomItem = itemsArray.splice(randomIndex, 1)[0];
-                        /**/
-                        /**/     newItemsArray.push(randomItem);
-              /**/
-}
-                    /**/ items = $(newItemsArray);
-            /*** this is ONLY_FOR_DEMO! / end */
+            //         /*** this is ONLY_FOR_DEMO! / start */
+            //         /**/ const itemsArray = items.get();
+            //         /**/ const newItemsArray = [];
+            //         /**/
+            //         /**/ while (itemsArray.length > 0) {
+            //             /**/     const randomIndex = Math.floor(Math.random() * itemsArray.length);
+            //             /**/     const randomItem = itemsArray.splice(randomIndex, 1)[0];
+            //             /**/
+            //             /**/     newItemsArray.push(randomItem);
+            //   /**/
+            // }
+            //         /**/ items = $(newItemsArray);
+            // /*** this is ONLY_FOR_DEMO! / end */
 
             block.find('.owl-carousel')
               .trigger('replace.owl.carousel', [items])
@@ -321,6 +321,22 @@ export const productPage = function () {
             clearTimeout(timer);
             cancelPreviousGroupChange = function () { };
           };
+        });
+      });
+    });
+
+    /*
+   // .block-slideshow
+   */
+    $(function () {
+      $('.block-slideshow__carousel').each(function () {
+        const owlCarousel = $(this).find('.owl-carousel');
+
+        owlCarousel.owlCarousel({
+          items: 1,
+          dots: true,
+          loop: true,
+          rtl: isRTL()
         });
       });
     });

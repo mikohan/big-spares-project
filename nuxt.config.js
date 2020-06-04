@@ -1,5 +1,8 @@
 import { headerType } from './config.logic/header.loader'
+require('dotenv').config()
+
 export default {
+  
   mode: 'universal',
   /*
   ** Headers of the page

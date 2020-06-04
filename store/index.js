@@ -5,10 +5,12 @@ import { res } from './zapchasti.tmp'
 
 const categoryEndpoint = 'http://localhost:8000/api/product/categorytree/'
 const categoryFirstEndpoint = 'http://localhost:8000/api/product/categoryfirst/'
+const productEndpoint = 'https://partshub.tk/api/product/singleproduct/'
 
 export const state = () => ({
   categories: [],
-  categoriesFirstLevel: []
+  categoriesFirstLevel: [],
+  singleProduct: {}
 })
 
 export const mutations = {
@@ -17,10 +19,22 @@ export const mutations = {
   },
   setCategoriesFirstLevel(state, categoriesFirstLevel) {
     state.categoriesFirstLevel = categoriesFirstLevel.sort(compare)
+  },
+  setSingleProduct(state, product) {
+    state.singleProduct = product
   }
+
 }
 
 export const actions = {
+  fetchSingleProduct(vuexContext, context) {
+    const id = 2285
+    return this.$axios.$get(`${productEndpoint}/${id}/`)
+      .then((product) => {
+        vuexContext.commit('setSingleProduct', product)
+      })
+      .catch(e => console.error('Error from Store trying to fetch single product from the server ', e))
+  },
   nuxtServerInit(vuexContext, context) {
     // Fetching First Level of Categories and depth == 1
     return this.$axios.$get(categoryFirstEndpoint)
@@ -53,6 +67,9 @@ export const actions = {
 }
 
 export const getters = {
+  getSingleProduct(state) {
+    return state.singleProduct
+  },
   getCategories(state) {
     return state.categories
   },
@@ -63,7 +80,7 @@ export const getters = {
     return function (slug) {
       // const res = findBySlug(state.categoriesFirstLevel, slug)
       // console.log(res)
-     
+
       return res
     }
 
