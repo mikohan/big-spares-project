@@ -2,8 +2,13 @@
 const header = 'classic' // Variants 'spaceship' : 'classic'
 const color = 'blue' // Variants 'red' : 'blue'
 
-// ad some other settings
 
 
 
-export  { header, color }
+// server settings
+const mode = 'remote' // Options remote | local  From where getting data
+
+
+
+// Exporting stuff
+export  { header, color, mode }

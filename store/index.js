@@ -1,11 +1,17 @@
 import { compare } from '~/helpers/sort'
 import { findBySlug } from '~/helpers/recursiveFinder'
 import { res } from './zapchasti.tmp'
+import { mode } from '../config'
 
 
-const categoryEndpoint = 'http://localhost:8000/api/product/categorytree/'
-const categoryFirstEndpoint = 'http://localhost:8000/api/product/categoryfirst/'
-const productEndpoint = 'https://partshub.tk/api/product/singleproduct/'
+const masterUrl = mode === 'local' ? 'http://localhost:8000' : 'https://partshub.tk' 
+
+
+
+
+const categoryEndpoint = `${masterUrl}/api/product/categorytree/`
+const categoryFirstEndpoint = `${masterUrl}/api/product/categoryfirst/`
+const productEndpoint = `${masterUrl}/api/product/singleproduct/`
 
 export const state = () => ({
   categories: [],
