@@ -13,17 +13,25 @@ const categoryEndpoint = `${masterUrl}/api/product/categorytree/`
 const categoryFirstEndpoint = `${masterUrl}/api/product/categoryfirst/`
 const productEndpoint = `${masterUrl}/api/product/singleproduct/`
 const carModelList = `http://localhost:8000/api/product/getcarmodelsiteall/` // Dont forget use it tomorrow
-const carModelSingle = `http://localhost:8000/api/product/getcarmodelsite/1/` // Also the same
+const carMakesUrl = `http://localhost:8000/api/product/getcarmakes/` // Endpoint for Getting All Car Makers
 
 export const state = () => ({
   categories: [],
   categoriesFirstLevel: [],
   singleProduct: {},
-  carModels: []
+  carModels: [],
+  carMakes: [],
+  selectedCar: {}
 })
 
 export const mutations = {
-  setCarModel(state, carModels) {
+  setSelectedCar(state, selectedCar) {
+    state.selectedCar = selectedCar
+  },
+  setCarMakes(state, carMakes) {
+    state.carMakes = carMakes
+  },
+  setCarModels(state, carModels) {
     state.carModels = carModels
   },
   setCategories(state, categories) {
@@ -39,15 +47,39 @@ export const mutations = {
 }
 
 export const actions = {
+  // Initalization action
+  nuxtServerInit(vuexContext, context) {
+    // Trying to get carMakes
+    vuexContext.dispatch('fetchCarMakes')
+    // Trying to get carModels 
+    vuexContext.dispatch('fetchCarModels')
+    // Fetching First Level of Categories and depth == 1
+    return this.$axios.$get(categoryFirstEndpoint)
+      .then(data => {
+        vuexContext.commit('setCategoriesFirstLevel', data.results)
+      })
+      // .then(() => {
+      //   vuexContext.dispatch('fetchCarModels')
+      // })
+      .catch(e => {
+        console.error('Error in State Has Occured', e.message)
+      })
+  },
   // Getting Car Model from Server
   fetchCarModels(vuexContext, context) {
-    const carModelId = 1
-    return this.$axios.$get(`${carModelEndpoint}/${carModelId}`)
+    return this.$axios.$get(`${carModelList}`)
       .then(result => {
-        console.log(result)
-        vuexContext.commit('setCarModel', result)
+        vuexContext.commit('setCarModels', result.results)
       })
       .catch(e => console.error('Error while loading carModels from Server', e))
+  },
+  // Getting Car Makes from Server
+  fetchCarMakes(vuexContext, context) {
+    return this.$axios.$get(`${carMakesUrl}`)
+      .then(result => {
+        vuexContext.commit('setCarMakes', result.results)
+      })
+      .catch(e => console.error('Error while loading carMakes from Server', e))
   },
   fetchSingleProduct(vuexContext, context) {
     const id = 2285
@@ -57,16 +89,7 @@ export const actions = {
       })
       .catch(e => console.error('Error from Store trying to fetch single product from the server ', e))
   },
-  nuxtServerInit(vuexContext, context) {
-    // Fetching First Level of Categories and depth == 1
-    return this.$axios.$get(categoryFirstEndpoint)
-      .then(data => {
-        vuexContext.commit('setCategoriesFirstLevel', data.results)
-      })
-      .catch(e => {
-        console.error('Error in State Has Occured', e.message)
-      })
-  },
+ 
   fetchCategories(vuexContext, context) {
     return this.$axios.$get(categoryEndpoint)
       .then(data => {
@@ -89,6 +112,12 @@ export const actions = {
 }
 
 export const getters = {
+  getSelectedCar(state) {
+    return state.selectedCar
+  },
+  getCarModels(state) {
+    return state.carModels
+  },
   getSingleProduct(state) {
     return state.singleProduct
   },
@@ -106,6 +135,9 @@ export const getters = {
       return res
     }
 
+  },
+  getCarMakes(state) {
+    return state.carMakes
   }
 }
 

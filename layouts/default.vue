@@ -24,6 +24,7 @@ export default {
     HeaderComponent,
     FooterRed
   },
+  
 
   mounted() {}
 }

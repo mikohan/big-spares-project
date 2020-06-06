@@ -24,7 +24,8 @@
               />
             </svg>
           </span>
-          <span class="search__button-title">Select Vehicle</span>
+          <span v-if="selectedCar" class="search__button-title">{{ selectedCar.name }}</span>
+          <span v-else class="search__button-title">Select Vehicle</span>
         </button>
         <button class="search__button search__button--end" type="submit">
           <span class="search__button-icon"
@@ -327,6 +328,11 @@ export default {
     return {
       headerType: headerType.component
     }
+  },
+  computed: {
+    selectedCar() {
+      return this.$store.getters.getSelectedCar
+    }
   }
 }
 </script>
@@ -347,3 +353,4 @@ export default {
   }
 }
 </style>
+

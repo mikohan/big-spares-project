@@ -192,10 +192,14 @@
 <script>
 
 export default {
+   async fetch(context) {
+    await console.log("IN FOOTER FETCH")
+  },
   computed: {
     uri() {
       return process.env.BASE_URL
     }
-  }
+  },
+ 
 }
 </script>

@@ -17,10 +17,18 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
+      { name: "msapplication-TileColor", content: "#da532c" },
+      { name: "theme-color", content: "#ffffff" }
     ],
+
+   
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'apple-touch-icon', size: '180x180', href: '/images/icons/apple-touch-icon.png' },
+      { rel: 'icon', type: 'image/png', sizes: "32x32", href: "/images/icons/favicon-32x32.png" },
+      { rel: "icon", type: "image/png", sizes: "16x16", href: "/images/icons/favicon-16x16.png" },
+      { rel: "manifest", href: "/images/icons/site.webmanifest"},
+      { rel: "mask-icon", href: "/images/icons/safari-pinned-tab.svg", color: "#5bbad5" },
       { rel: 'stylesheet', href: '/vendor/bootstrap/css/bootstrap.css' },
       { rel: 'stylesheet', href: '/vendor/owl-carousel/assets/owl.carousel.min.css' },
       { rel: 'stylesheet', href: '/vendor/photoswipe/photoswipe.css' },
@@ -58,6 +66,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/filters.js'
   ],
   /*
   ** Nuxt.js dev-modules
