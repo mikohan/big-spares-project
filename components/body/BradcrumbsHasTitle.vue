@@ -33,5 +33,5 @@
         <h1 class="block-header__title">Transmission</h1>
       </div>
     </div>
-  </div>
+      </div>
 </template>

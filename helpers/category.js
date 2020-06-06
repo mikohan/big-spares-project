@@ -1,29 +1,28 @@
-export const category = function () {
-  (function ($) {
+export const category = function() {
+  ;(function($) {
+    'use strict'
 
-    "use strict";
-
-    let DIRECTION = null;
+    let DIRECTION = null
 
     function direction() {
       if (DIRECTION === null) {
-        DIRECTION = getComputedStyle(document.body).direction;
+        DIRECTION = getComputedStyle(document.body).direction
       }
 
-      return DIRECTION;
+      return DIRECTION
     }
 
     function isRTL() {
-      return direction() === 'rtl';
+      return direction() === 'rtl'
     }
 
     // /*
     // // .block-products-carousel
     // */
-    $(function () {
+    $(function() {
       const carouselOptions = {
         'grid-4': {
-          items: 4,
+          items: 4
         },
         'grid-4-sidebar': {
           items: 4,
@@ -34,7 +33,7 @@ export const category = function () {
             768: { items: 3, margin: 16 },
             576: { items: 2, margin: 16 },
             460: { items: 2, margin: 16 },
-            0: { items: 1 },
+            0: { items: 1 }
           }
         },
         'grid-5': {
@@ -46,7 +45,7 @@ export const category = function () {
             768: { items: 3, margin: 16 },
             576: { items: 2, margin: 16 },
             460: { items: 2, margin: 16 },
-            0: { items: 1 },
+            0: { items: 1 }
           }
         },
         'grid-6': {
@@ -59,16 +58,16 @@ export const category = function () {
             768: { items: 3, margin: 16 },
             576: { items: 2, margin: 16 },
             460: { items: 2, margin: 16 },
-            0: { items: 1 },
+            0: { items: 1 }
           }
         },
-        'horizontal': {
+        horizontal: {
           items: 4,
           responsive: {
             1400: { items: 4, margin: 14 },
             992: { items: 3, margin: 14 },
             768: { items: 2, margin: 14 },
-            0: { items: 1, margin: 14 },
+            0: { items: 1, margin: 14 }
           }
         },
         'horizontal-sidebar': {
@@ -76,83 +75,107 @@ export const category = function () {
           responsive: {
             1400: { items: 3, margin: 14 },
             768: { items: 2, margin: 14 },
-            0: { items: 1, margin: 14 },
+            0: { items: 1, margin: 14 }
           }
         }
-      };
+      }
 
-      $('.block-products-carousel').each(function () {
-        const block = $(this);
-        const layout = $(this).data('layout');
-        const owlCarousel = $(this).find('.owl-carousel');
+      $('.block-products-carousel').each(function() {
+        const block = $(this)
+        const layout = $(this).data('layout')
+        const owlCarousel = $(this).find('.owl-carousel')
 
-        owlCarousel.owlCarousel(Object.assign({}, {
-          dots: false,
-          margin: 20,
-          loop: true,
-          rtl: isRTL()
-        }, carouselOptions[layout]));
+        owlCarousel.owlCarousel(
+          Object.assign(
+            {},
+            {
+              dots: false,
+              margin: 20,
+              loop: true,
+              rtl: isRTL()
+            },
+            carouselOptions[layout]
+          )
+        )
 
-        $(this).find('.section-header__arrow--prev').on('click', function () {
-          owlCarousel.trigger('prev.owl.carousel', [500]);
-        });
-        $(this).find('.section-header__arrow--next').on('click', function () {
-          owlCarousel.trigger('next.owl.carousel', [500]);
-        });
+        $(this)
+          .find('.section-header__arrow--prev')
+          .on('click', function() {
+            owlCarousel.trigger('prev.owl.carousel', [500])
+          })
+        $(this)
+          .find('.section-header__arrow--next')
+          .on('click', function() {
+            owlCarousel.trigger('next.owl.carousel', [500])
+          })
 
-        let cancelPreviousGroupChange = function () { };
+        let cancelPreviousGroupChange = function() {}
 
-        $(this).find('.section-header__groups-button').on('click', function () {
-          const carousel = block.find('.block-products-carousel__carousel');
+        $(this)
+          .find('.section-header__groups-button')
+          .on('click', function() {
+            const carousel = block.find('.block-products-carousel__carousel')
 
-          if ($(this).is('.section-header__groups-button--active')) {
-            return;
-          }
+            if ($(this).is('.section-header__groups-button--active')) {
+              return
+            }
 
-          cancelPreviousGroupChange();
+            cancelPreviousGroupChange()
 
-          $(this).closest('.section-header__groups').find('.section-header__groups-button').removeClass('section-header__groups-button--active');
-          $(this).addClass('section-header__groups-button--active');
+            $(this)
+              .closest('.section-header__groups')
+              .find('.section-header__groups-button')
+              .removeClass('section-header__groups-button--active')
+            $(this).addClass('section-header__groups-button--active')
 
-          carousel.addClass('block-products-carousel__carousel--loading');
+            carousel.addClass('block-products-carousel__carousel--loading')
 
-          // timeout ONLY_FOR_DEMO! you can replace it with an ajax request
-          let timer;
-          timer = setTimeout(function () {
-            let items = block.find('.owl-carousel .owl-item:not(".cloned") .block-products-carousel__column');
+            // timeout ONLY_FOR_DEMO! you can replace it with an ajax request
+            let timer
+            timer = setTimeout(function() {
+              let items = block.find(
+                '.owl-carousel .owl-item:not(".cloned") .block-products-carousel__column'
+              )
 
-                    /*** this is ONLY_FOR_DEMO! / start */
-                    /**/ const itemsArray = items.get();
-                    /**/ const newItemsArray = [];
-                    /**/
-                    /**/ while (itemsArray.length > 0) {
-                        /**/     const randomIndex = Math.floor(Math.random() * itemsArray.length);
-                        /**/     const randomItem = itemsArray.splice(randomIndex, 1)[0];
-                        /**/
-                        /**/     newItemsArray.push(randomItem);
+              /*** this is ONLY_FOR_DEMO! / start */
+              /**/ const itemsArray = items.get()
+              /**/ const newItemsArray = []
               /**/
-}
-                    /**/ items = $(newItemsArray);
-            /*** this is ONLY_FOR_DEMO! / end */
+              /**/ while (itemsArray.length > 0) {
+                /**/ const randomIndex = Math.floor(
+                  Math.random() * itemsArray.length
+                )
+                /**/ const randomItem = itemsArray.splice(randomIndex, 1)[0]
+                /**/
+                /**/ newItemsArray.push(randomItem)
+                /**/
+              }
+              /**/ items = $(newItemsArray)
+              /*** this is ONLY_FOR_DEMO! / end */
 
-            block.find('.owl-carousel')
-              .trigger('replace.owl.carousel', [items])
-              .trigger('refresh.owl.carousel')
-              .trigger('to.owl.carousel', [0, 0]);
+              block
+                .find('.owl-carousel')
+                .trigger('replace.owl.carousel', [items])
+                .trigger('refresh.owl.carousel')
+                .trigger('to.owl.carousel', [0, 0])
 
-            $('.product-card__action--quickview', block).on('click', function () {
-              quickview.clickHandler.apply(this, arguments);
-            });
+              $('.product-card__action--quickview', block).on(
+                'click',
+                function() {
+                  quickview.clickHandler.apply(this, arguments)
+                }
+              )
 
-            carousel.removeClass('block-products-carousel__carousel--loading');
-          }, 1000);
-          cancelPreviousGroupChange = function () {
-            // timeout ONLY_FOR_DEMO!
-            clearTimeout(timer);
-            cancelPreviousGroupChange = function () { };
-          };
-        });
-      });
-    });
+              carousel.removeClass('block-products-carousel__carousel--loading')
+            }, 1000)
+            cancelPreviousGroupChange = function() {
+              // timeout ONLY_FOR_DEMO!
+              clearTimeout(timer)
+              cancelPreviousGroupChange = function() {}
+            }
+          })
+      })
+    })
   })(jQuery)
 }
+
