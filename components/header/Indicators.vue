@@ -2,7 +2,7 @@
   <div class="header__indicators">
     <!-- <div class="indicator indicator--trigger--click"> -->
       <div class="indicator indicator--trigger--click"  :class="{ 'indicator--open-car': carShow }">
-      <a href="account-login.html" class="indicator__button" @click.prevent="carShow = !carShow">
+      <a href="/cars" class="indicator__button" @click.prevent="carShow = !carShow">
         <span class="indicator__icon">
           <svg width="32" height="32" viewBox="0 0 512 512">
             <path
@@ -163,7 +163,7 @@
     </div>
 
     <div class="indicator indicator--trigger--click">
-      <a href="account-login.html" class="indicator__button">
+      <nuxt-link to="/login" class="indicator__button">
         <span class="indicator__icon">
           <svg width="30" height="30" viewBox="0 0 350 350">
             <path
@@ -221,7 +221,7 @@
         </span>
         <span class="indicator__title">Hello, Log In</span>
         <span class="indicator__value">My Account</span>
-      </a>
+      </nuxt-link>
       <div class="indicator__content">
         <div class="account-menu">
           <form class="account-menu__form">
@@ -259,7 +259,7 @@
               </button>
             </div>
             <div class="account-menu__form-link">
-              <a href="account-login.html">Create An Account</a>
+              <nuxt-link to="/login">Create An Account</nuxt-link>
             </div>
           </form>
           <div class="account-menu__divider"></div>
