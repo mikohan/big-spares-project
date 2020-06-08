@@ -4,9 +4,14 @@ require('dotenv').config()
 export default {
   
   mode: 'universal',
+  router: {
+    middleware: ['selectedCar'],
+  },
+  
   /*
   ** Headers of the page
   */
+
   head: {
     htmlAttrs: {
       lang: 'ru',

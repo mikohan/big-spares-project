@@ -6,7 +6,7 @@ const color = 'blue' // Variants 'red' : 'blue'
 
 
 // server settings
-const mode = 'remote' // Options remote | local  From where getting data
+const mode = 'local' // Options remote | local  From where getting data
 
 
 

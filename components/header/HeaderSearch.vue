@@ -24,7 +24,7 @@
               />
             </svg>
           </span>
-          <span v-if="selectedCar" class="search__button-title">{{ selectedCar.name }}</span>
+          <span v-if="selectedCar" class="search__button-title">{{ selectedCar.name|capitalize }}</span>
           <span v-else class="search__button-title">Select Vehicle</span>
         </button>
         <button class="search__button search__button--end" type="submit">

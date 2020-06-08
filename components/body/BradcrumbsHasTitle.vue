@@ -30,8 +30,22 @@
             <li class="breadcrumb__title-safe-area" role="presentation"></li>
           </ol>
         </nav>
-        <h1 class="block-header__title">Transmission</h1>
+        <h1 class="block-header__title">Трансмиссия {{ carModel.name }}</h1>
       </div>
     </div>
       </div>
 </template>
+
+<script>
+export default {
+  computed: {
+    carModel() {
+      return this.$store.getters.getSelectedCar
+    }
+  },
+  asyncData(context) {
+    console.log('In async data')
+  }
+  
+}
+</script>
