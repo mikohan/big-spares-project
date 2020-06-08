@@ -357,6 +357,7 @@
   color: inherit;
   display: block;
   position: relative;
+  transition:  1s linear;
 }
 
 .departments__item-arrow {

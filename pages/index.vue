@@ -8107,12 +8107,22 @@
     <div class="block-space block-space--layout--before-footer"></div>
   </div>
   <!-- site__body / end -->
+  
 </template>
 
 <script>
 import { mainPageJq } from '~/helpers/homePageJquery'
 export default {
+ head: {
+    title: 'Super Spare Parts Project 🚀',
+    meta: [
+      { hid: 'description', name: 'description', content: 'Super Spare Parts Project description' }
+    ],
+    
+  },
   mounted() {
+      //importing all JQery functions here
+      // it need to be changed to vue later on
       mainPageJq()
   }
 }

@@ -11,13 +11,16 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "^2.0.0",
     "@nuxtjs/axios": "^5.3.6",
-    "@nuxtjs/dotenv": "^1.4.0"
+    "nuxt": "^2.0.0",
+    "vue-select": "^3.10.3"
   },
   "devDependencies": {
+    "@nuxtjs/dotenv": "^1.4.1",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "prettier": "^1.19.1"
+    "node-sass": "^4.14.1",
+    "prettier": "^1.19.1",
+    "sass-loader": "^8.0.2"
   }
 }

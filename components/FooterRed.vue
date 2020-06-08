@@ -173,14 +173,14 @@
           <div class="site-footer__bottom-row">
             <div class="site-footer__copyright">
               <!-- copyright -->
-              Powered by HTML — Designed by
-              <a href="https://themeforest.net/user/kos9" target="_blank"
-                >Kos</a
+              All Right! 
+              <a :href="uri" target="_blank"
+                > Change Logo for build!!!!!</a
               >
               <!-- copyright / end -->
             </div>
             <div class="site-footer__payments">
-              <img src="images/payments.png" alt="" />
+              <img :src="require('~/static/images/payments.png')" alt="" />
             </div>
           </div>
         </div>
@@ -188,3 +188,18 @@
     </div>
   </footer>
 </template>
+
+<script>
+
+export default {
+   async fetch(context) {
+    await console.log("IN FOOTER FETCH")
+  },
+  computed: {
+    uri() {
+      return process.env.BASE_URL
+    }
+  },
+ 
+}
+</script>
