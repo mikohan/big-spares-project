@@ -1,17 +1,17 @@
 import { compare } from '~/helpers/sort'
 import { findBySlug } from '~/helpers/recursiveFinder'
 import { res } from './zapchasti.tmp'
-import { mode } from '../config'
-
-
-const masterUrl = mode === 'local' ? 'http://localhost:8000' : 'https://partshub.tk'
+import { endpointBase } from '../config' // Endpoint switcher server remote or local
 
 
 
 
-const categoryEndpoint = `${masterUrl}/api/product/categorytree/`
-const categoryFirstEndpoint = `${masterUrl}/api/product/categoryfirst/`
-const productEndpoint = `${masterUrl}/api/product/singleproduct/`
+
+
+
+const categoryEndpoint = `${endpointBase}/api/product/categorytree/`
+const categoryFirstEndpoint = `${endpointBase}/api/product/categoryfirst/`
+const productEndpoint = `${endpointBase}/api/product/singleproduct/`
 const carModelList = `http://localhost:8000/api/product/getcarmodelsiteall/` // Dont forget use it tomorrow
 const carMakesUrl = `http://localhost:8000/api/product/getcarmakes/` // Endpoint for Getting All Car Makers
 
@@ -73,6 +73,14 @@ export const actions = {
       })
       .catch(e => console.error('Error while loading carModels from Server', e))
   },
+  fetchSelectedCar(vuexContext, context) {
+    const id = 1
+    return this.$axios.$get(`${singleCarModelEndpoint}/${id}/`)
+    .then( res => {
+      vuexContext.commit('setSelectedCar', res.results)
+    })
+    .catch(e => console.error('Error while loading selectedCar from Server', e))
+  },
   // Getting Car Makes from Server
   fetchCarMakes(vuexContext, context) {
     return this.$axios.$get(`${carMakesUrl}`)
@@ -129,15 +137,15 @@ export const getters = {
   },
   getCatBySlug(state) {
     return function (slug) {
-      // const res = findBySlug(state.categoriesFirstLevel, slug)
-      // console.log(res)
-
       return res
     }
 
   },
   getCarMakes(state) {
     return state.carMakes
+  },
+  getSelectedCar(state) {
+    return state.selectedCar
   }
 }
 

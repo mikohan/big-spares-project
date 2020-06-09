@@ -5,7 +5,7 @@ export default {
   
   mode: 'universal',
   router: {
-    middleware: ['selectedCar'],
+    // middleware: ['selectedCar'],
   },
   
   /*
