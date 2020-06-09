@@ -276,7 +276,7 @@
           </a>
           <div class="account-menu__divider"></div>
           <ul class="account-menu__links">
-            <li><a href="account-dashboard.html">Dashboard</a></li>
+            <li><nuxt-link to="/account/dashboard">Dashboard</nuxt-link></li>
             <li><a href="account-dashboard.html">Garage</a></li>
             <li><a href="account-profile.html">Edit Profile</a></li>
             <li><a href="account-orders.html">Order History</a></li>
