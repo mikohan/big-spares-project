@@ -44,7 +44,7 @@
           class="account-nav__item"
           :class="currentPage.includes('logout') ? activeClass : ''"
         >
-          <nuxt-link to="/logout">Logout</nuxt-link>
+          <nuxt-link to="/account/logout">Logout</nuxt-link>
         </li>
       </ul>
     </div>

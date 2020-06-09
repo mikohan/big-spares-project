@@ -322,10 +322,11 @@ export default {
         this.$axios
           .$post(`${endpointBase}/api/rest-auth/login/`, this.user)
           .then(result => {
-            console.log(result)
+            // console.log(result)
+            this.$store.dispatch('login/fetchToken', result)
             this.user = {}
             this.validUsername = 1
-            this.$router.replace({ path: '/'})
+            // this.$router.replace({ path: '/'})
           })
           .catch(e => console.error('Login Page Error: ', e))
       }
@@ -460,6 +461,7 @@ export default {
   },
   mounted() {
     this.capchaRefresh()
+    console.log('getToken', this.$store.getters['login/getToken'])
   }
 }
 </script>
