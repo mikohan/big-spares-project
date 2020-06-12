@@ -38,7 +38,7 @@
 
 <script>
 import { vehicle } from '~/helpers/vehiclePicker'
-import { shoppingCart } from '~/helpers/shoppingCart'
+// import { shoppingCart } from '~/helpers/shoppingCart'
 import HeaderLogo from '~/components/header/HeaderLogo'
 import Departments from '~/components/header/Departments'
 import VehiclePickerModal from '~/components/header/VehiclePickerModal'
@@ -61,7 +61,7 @@ export default {
   },
   mounted() {
     vehicle()
-    shoppingCart()
+   // shoppingCart()
   }
 }
 </script>
