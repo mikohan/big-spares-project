@@ -162,8 +162,12 @@
       </transition>
     </div>
 
-    <div class="indicator indicator--trigger--click">
-      <nuxt-link to="/login" class="indicator__button">
+    <div class="indicator indicator--trigger--click"
+      :class="{ 'indicator--open': loginShow }">
+      <a href="/login" class="indicator__button"
+        
+        @click.prevent="loginShow = !loginShow"
+        >
         <span class="indicator__icon">
           <svg width="30" height="30" viewBox="0 0 350 350">
             <path
@@ -221,11 +225,14 @@
         </span>
         <span class="indicator__title">Hello, Log In</span>
         <span class="indicator__value">My Account</span>
-      </nuxt-link>
+      </a>
       <div class="indicator__content">
         <div class="account-menu">
           <form class="account-menu__form">
-            <div class="account-menu__form-title">
+            <div v-if="loginMessage" class="account-menu__form-title login__error">
+              {{ loginMessage }}
+            </div>
+            <div v-else class="account-menu__form-title">
               Log In to Your Account
             </div>
             <div class="form-group">
@@ -233,8 +240,9 @@
                 >Email address</label
               >
               <input
+                v-model="username"
                 id="header-signin-email"
-                type="email"
+                type="text"
                 class="form-control form-control-sm"
                 placeholder="Email address"
               />
@@ -245,16 +253,21 @@
               >
               <div class="account-menu__form-forgot">
                 <input
+                  v-model="password"
                   id="header-signin-password"
                   type="password"
                   class="form-control form-control-sm"
                   placeholder="Password"
                 />
-                <a href="" class="account-menu__form-forgot-link">Forgot?</a>
+                <nuxt-link to="/login" class="account-menu__form-forgot-link"
+                  >Forgot?</nuxt-link>
               </div>
             </div>
             <div class="form-group account-menu__form-button">
-              <button type="submit" class="btn btn-primary btn-sm">
+              <button type="submit" class="btn btn-primary btn-sm"
+                                    @click.prevent="logIn"
+
+                >
                 Login
               </button>
             </div>
@@ -265,7 +278,7 @@
           <div class="account-menu__divider"></div>
           <a href="" class="account-menu__user">
             <div class="account-menu__user-avatar">
-              <img src="images/avatars/avatar-4.jpg" alt="" />
+              <img :src="require('~/static/images/avatars/avatar-4.jpg')" alt="" />
             </div>
             <div class="account-menu__user-info">
               <div class="account-menu__user-name">Ryan Ford</div>
@@ -276,15 +289,21 @@
           </a>
           <div class="account-menu__divider"></div>
           <ul class="account-menu__links">
-            <li><nuxt-link to="/account/dashboard">Dashboard</nuxt-link></li>
-            <li><a href="account-dashboard.html">Garage</a></li>
-            <li><a href="account-profile.html">Edit Profile</a></li>
-            <li><a href="account-orders.html">Order History</a></li>
-            <li><a href="account-addresses.html">Addresses</a></li>
+            <li><nuxt-link to="/account/dashboard"
+                           @click.native="toggleLoginShow">Dashboard</nuxt-link></li>
+            <li><nuxt-link to="/account/garage"
+                @click.native="toggleLoginShow">Garage</nuxt-link></li>
+            <li><nuxt-link to="/account/profile"
+                @click.native="toggleLoginShow">Edit Profile</nuxt-link></li>
+            <li><nuxt-link to="/account/orders"
+                @click.native="toggleLoginShow">Order History</nuxt-link></li>
+            <li><nuxt-link to="/account/addresses"
+                @click.native="toggleLoginShow">Addresses</nuxt-link></li>
           </ul>
           <div class="account-menu__divider"></div>
           <ul class="account-menu__links">
-            <li><a href="account-login.html">Logout</a></li>
+            <li><a href="/account/logout"
+                @click.prevent="logOut">Logout</a></li>
           </ul>
         </div>
       </div>
@@ -449,6 +468,8 @@
 
 <script>
 import vSelect from 'vue-select'
+import { endpointBase } from '~/config'
+import { Messages } from '~/config.logic/messages'
 
 export default {
   components: {
@@ -456,7 +477,11 @@ export default {
   },
   data() {
     return {
+      username: null,
+      password: null,
       carShow: false,
+      loginShow: false,
+      loginMessage: null,
       selectedCarMake: 0,
       selectedCarModel: 0,
       selected: {
@@ -492,6 +517,35 @@ export default {
     selectCarState() {
       this.$store.commit('setSelectedCar', this.selectedCarModel)
       this.carShow = false
+    },
+    logIn() {
+      if (this.$store.getters['login/getToken']) {
+        this.loginMessage = Messages.LoginMessages.LoginAlready
+        return
+      }
+      if (this.username && this.password) {
+        this.username = this.username.replace(/^[^a-z0-9]+$/i, '')
+        this.password = this.password.replace(/^[^a-z0-9\!\@\#\$\%\^\&\*\(\)]+$/i, '')
+        this.$axios
+          .$post(`${endpointBase}/api/rest-auth/login/`, { username: this.username, password: this.password})
+          .then(result => {
+            this.$store.dispatch('login/fetchToken', result)
+            this.loginShow = false
+            this.$router.push('/account/dashboard')
+          })
+          .catch(e => {
+            this.loginMessage = Messages.LoginMessages.LoginError
+            console.error('Login Page Error: ', e)
+          })
+      }
+    },
+    logOut() {
+      this.$store.dispatch('login/logOut')
+      this.loginShow = false
+    },
+    toggleLoginShow() {
+      console.log(this.loginShow)
+      this.loginShow = !this.loginShow
     }
   },
   mounted() {
@@ -561,5 +615,8 @@ export default {
     opacity: 1;
     visibility: visible;
     transform: rotateX(0deg)
+}
+.login__error {
+  color: $font-error;
 }
 </style>

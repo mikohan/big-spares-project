@@ -139,6 +139,7 @@ import SideNavigation from '~/components/account/SideNavigation'
 export default {
   components: {
     SideNavigation
-  }
+  },
+  middleware: ['check-auth', 'auth'],
 }
 </script>
