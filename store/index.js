@@ -1,13 +1,7 @@
 import { compare } from '~/helpers/sort'
-import { findBySlug } from '~/helpers/recursiveFinder'
+// import { findBySlug } from '~/helpers/recursiveFinder'
 import { res } from './zapchasti.tmp'
 import { endpointBase } from '../config' // Endpoint switcher server remote or local
-
-
-
-
-
-
 
 const categoryEndpoint = `${endpointBase}/api/product/categorytree/`
 const categoryFirstEndpoint = `${endpointBase}/api/product/categoryfirst/`
@@ -43,7 +37,6 @@ export const mutations = {
   setSingleProduct(state, product) {
     state.singleProduct = product
   }
-
 }
 
 export const actions = {
@@ -51,23 +44,27 @@ export const actions = {
   nuxtServerInit(vuexContext, context) {
     // Trying to get carMakes
     vuexContext.dispatch('fetchCarMakes')
-    // Trying to get carModels 
+    // Trying to get carModels
     vuexContext.dispatch('fetchCarModels')
     // Fetching First Level of Categories and depth == 1
-    return this.$axios.$get(categoryFirstEndpoint)
-      .then(data => {
-        vuexContext.commit('setCategoriesFirstLevel', data.results)
-      })
-      // .then(() => {
-      //   vuexContext.dispatch('fetchCarModels')
-      // })
-      .catch(e => {
-        console.error('Error in State Has Occured', e.message)
-      })
+    return (
+      this.$axios
+        .$get(categoryFirstEndpoint)
+        .then(data => {
+          vuexContext.commit('setCategoriesFirstLevel', data.results)
+        })
+        // .then(() => {
+        //   vuexContext.dispatch('fetchCarModels')
+        // })
+        .catch(e => {
+          console.error('Error in State Has Occured', e.message)
+        })
+    )
   },
   // Getting Car Model from Server
   fetchCarModels(vuexContext, context) {
-    return this.$axios.$get(`${carModelList}`)
+    return this.$axios
+      .$get(`${carModelList}`)
       .then(result => {
         vuexContext.commit('setCarModels', result.results)
       })
@@ -75,15 +72,19 @@ export const actions = {
   },
   fetchSelectedCar(vuexContext, context) {
     const id = 1
-    return this.$axios.$get(`${singleCarModelEndpoint}/${id}/`)
-    .then( res => {
-      vuexContext.commit('setSelectedCar', res.results)
-    })
-    .catch(e => console.error('Error while loading selectedCar from Server', e))
+    return this.$axios
+      .$get(`${singleCarModelEndpoint}/${id}/`)
+      .then(res => {
+        vuexContext.commit('setSelectedCar', res.results)
+      })
+      .catch(e =>
+        console.error('Error while loading selectedCar from Server', e)
+      )
   },
   // Getting Car Makes from Server
   fetchCarMakes(vuexContext, context) {
-    return this.$axios.$get(`${carMakesUrl}`)
+    return this.$axios
+      .$get(`${carMakesUrl}`)
       .then(result => {
         vuexContext.commit('setCarMakes', result.results)
       })
@@ -91,15 +92,22 @@ export const actions = {
   },
   fetchSingleProduct(vuexContext, context) {
     const id = 2285
-    return this.$axios.$get(`${productEndpoint}/${id}/`)
-      .then((product) => {
+    return this.$axios
+      .$get(`${productEndpoint}/${id}/`)
+      .then(product => {
         vuexContext.commit('setSingleProduct', product)
       })
-      .catch(e => console.error('Error from Store trying to fetch single product from the server ', e))
+      .catch(e =>
+        console.error(
+          'Error from Store trying to fetch single product from the server ',
+          e
+        )
+      )
   },
- 
+
   fetchCategories(vuexContext, context) {
-    return this.$axios.$get(categoryEndpoint)
+    return this.$axios
+      .$get(categoryEndpoint)
       .then(data => {
         vuexContext.commit('setCategories', data.results)
       })
@@ -109,7 +117,8 @@ export const actions = {
   },
   fetchCategoriesFirstLevel(vuexContext, context) {
     // Fetching First Level of Categories and depth == 1
-    return this.$axios.$get(categoryFirstEndpoint)
+    return this.$axios
+      .$get(categoryFirstEndpoint)
       .then(data => {
         vuexContext.commit('setCategoriesFirstLevel', data.results)
       })
@@ -136,10 +145,9 @@ export const getters = {
     return state.categoriesFirstLevel
   },
   getCatBySlug(state) {
-    return function (slug) {
+    return function(slug) {
       return res
     }
-
   },
   getCarMakes(state) {
     return state.carMakes
@@ -148,4 +156,3 @@ export const getters = {
     return state.selectedCar
   }
 }
-
