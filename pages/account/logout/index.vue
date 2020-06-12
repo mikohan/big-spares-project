@@ -4,7 +4,8 @@
 <script>
 export default {
   created() {
-    this.$router.replace({ path: '/'})
+    this.$store.dispatch('login/logOut')
+    this.$router.replace({ path: '/login'})
   }
 }
 </script>

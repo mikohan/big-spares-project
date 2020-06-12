@@ -1,5 +1,4 @@
 <template>
-  <!-- site__body -->
   <div class="site__body">
     <div class="block-space block-space--layout--after-header"></div>
     <div class="block">
@@ -11,7 +10,7 @@
               <div class="dashboard__profile card profile-card">
                 <div class="card-body profile-card__body">
                   <div class="profile-card__avatar">
-                    <img src="images/avatars/avatar-4.jpg" alt="" />
+                    <img :src="require('~/static/images/avatars/avatar-4.jpg')" alt="" >
                   </div>
                   <div class="profile-card__name">Helena Garcia</div>
                   <div class="profile-card__email">red-parts@example.com</div>
@@ -101,7 +100,6 @@
     </div>
     <div class="block-space block-space--layout--before-footer"></div>
   </div>
-  <!-- site__body / end -->
 </template>
 
 <script>
@@ -109,6 +107,7 @@ import SideNavigation from '~/components/account/SideNavigation'
 export default {
   components: {
     SideNavigation
-  }
+  },
+  middleware: ['check-auth', 'auth'],
 }
 </script>
