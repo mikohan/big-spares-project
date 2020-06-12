@@ -19,6 +19,7 @@ const HeaderComponent = () => {
 
 import FooterRed from '~/components/FooterRed'
 export default {
+  middleware: ['selectedCar'],
   components: {
     // HeaderRed,
     HeaderComponent,

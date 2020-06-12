@@ -18,7 +18,7 @@ export const actions = {
   fetchToken(vuexContext, context) {
     vuexContext.commit('setToken', context.key)
     localStorage.setItem('token', context.key)
-    Cookie.set('jwt', context.key)
+    Cookie.set('jwt', context.key, { expires: 1000 })
   },
   initAuth(vuexContext, req) {
     let token = null
@@ -26,7 +26,6 @@ export const actions = {
       const jwtCookie = req.headers.cookie
         .split(';')
         .find(c => c.trim().startsWith('jwt='))
-      console.log('JWT Cookie', jwtCookie)
       if (!jwtCookie) {
         vuexContext.dispatch('logOut')
         return

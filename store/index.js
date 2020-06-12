@@ -1,3 +1,4 @@
+import Cookie from 'js-cookie'
 import { compare } from '~/helpers/sort'
 // import { findBySlug } from '~/helpers/recursiveFinder'
 import { res } from './zapchasti.tmp'
@@ -39,6 +40,8 @@ export const mutations = {
   }
 }
 
+// Helper function for setting Car Vuex
+
 export const actions = {
   // Initalization action
   nuxtServerInit(vuexContext, context) {
@@ -61,8 +64,27 @@ export const actions = {
         })
     )
   },
+  getCarInit(vuexContext, req) {
+    let car
+    if (req) {
+      const carCookie = req.headers.cookie
+        .split(';')
+        .find(c => c.trim().startsWith('car='))
+      // console.log('IN SPLIT', decodeURIComponent(carCookie.split('=')[1]))
+      if (!carCookie) {
+        return
+      }
+      car = JSON.parse(decodeURIComponent(carCookie.split('=')[1]))
+    } else {
+      car = JSON.parse(localStorage.getItem('car'))
+      if (!car) {
+        return
+      }
+    }
+    vuexContext.commit('setSelectedCar', car)
+  },
   // Getting Car Model from Server
-  fetchCarModels(vuexContext, context) {
+  fetchCarModels(vuexContext) {
     return this.$axios
       .$get(`${carModelList}`)
       .then(result => {
@@ -71,18 +93,14 @@ export const actions = {
       .catch(e => console.error('Error while loading carModels from Server', e))
   },
   fetchSelectedCar(vuexContext, context) {
-    const id = 1
-    return this.$axios
-      .$get(`${singleCarModelEndpoint}/${id}/`)
-      .then(res => {
-        vuexContext.commit('setSelectedCar', res.results)
-      })
-      .catch(e =>
-        console.error('Error while loading selectedCar from Server', e)
-      )
+    console.log(context)
+    const car = JSON.stringify(context)
+    localStorage.setItem('car', car)
+    Cookie.set('car', context, { expires: 1000 })
+    vuexContext.commit('setSelectedCar', car)
   },
   // Getting Car Makes from Server
-  fetchCarMakes(vuexContext, context) {
+  fetchCarMakes(vuexContext) {
     return this.$axios
       .$get(`${carMakesUrl}`)
       .then(result => {
@@ -90,7 +108,7 @@ export const actions = {
       })
       .catch(e => console.error('Error while loading carMakes from Server', e))
   },
-  fetchSingleProduct(vuexContext, context) {
+  fetchSingleProduct(vuexContext) {
     const id = 2285
     return this.$axios
       .$get(`${productEndpoint}/${id}/`)

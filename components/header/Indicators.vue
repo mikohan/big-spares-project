@@ -125,7 +125,6 @@
                   >Выберите Марку</label
                 >
                 <v-select
-                  @input="onChangeSelect"
                   v-model="selectedCarMake"
                   label="name"
                   :options="carMakes"
@@ -137,7 +136,6 @@
                   >Выберите Модель</label
                 >
                 <v-select
-                @input="selectCarState"
                   v-model="selectedCarModel"
                   label="name"
                   :options="filteringCarModel(selectedCarMake.id)"
@@ -483,7 +481,7 @@ export default {
       loginShow: false,
       loginMessage: null,
       selectedCarMake: 0,
-      selectedCarModel: 0,
+      // selectedCarModel: 0,
       selected: {
         value: 1,
         label: 'option1'
@@ -492,6 +490,14 @@ export default {
     }
   },
   computed: {
+    selectedCarModel: {
+      get: function () {
+        return this.$store.getters.getSelectedCar
+      },
+      set: function(value) {
+        this.$store.dispatch('fetchSelectedCar', value)
+      }
+    },
     carModels() {
       const carModels = this.$store.getters.getCarModels
       return carModels
@@ -504,20 +510,21 @@ export default {
   },
   methods: {
     onChangeSelect(event) {
-      this.selectedCarModel = null
+      // this.selectedCarModel = null
     },
 
     filteringCarModel(make) {
       // Filtering Car Models By Car Make Have choosen
+      console.log(make)
       const n = this.carModels.filter(elem => {
         return elem.carmake === make
       })
       return n
     },
-    selectCarState() {
-      this.$store.commit('setSelectedCar', this.selectedCarModel)
-      this.carShow = false
-    },
+   // selectCarState() {
+   //   this.$store.dispatch('fetchSelectedCar', this.selectedCarModel)
+   //   this.carShow = false
+   // },
     logIn() {
       if (this.$store.getters['login/getToken']) {
         this.loginMessage = Messages.LoginMessages.LoginAlready

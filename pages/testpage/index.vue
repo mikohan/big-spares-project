@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
     <h1>Page for tests</h1>
+    <button @click="getCookie">Click</button>
     <div>
       <v-select
         v-model="selected"
@@ -18,7 +19,12 @@
 <script>
 import vSelect from 'vue-select'
 import Tree from '~/components/Tree'
+import Cookie from 'js-cookie'
+import { v4 as uuidv4 } from 'uuid'
+
 export default {
+
+  middleware: ['selectedCar'],
 
 
   data () {
@@ -54,14 +60,20 @@ export default {
     // }
   },
 
-  methods: {},
+  methods: {
+    getCookie() {
+      // console.log(Cookie.get('car'))
+      const car = this.$store.getters.getSelectedCar
+      console.log(car)
+    }
+  },
   // async fetch(context) {
   //   if (context.store.getters.loadedCategories.length === 0) {
   //     await context.store.dispatch('fetchCategories')
   //   }
   // },
   mounted() {
-    // console.log(this.loadedCategories)
+    this.getCookie()
   }
 }
 </script>
