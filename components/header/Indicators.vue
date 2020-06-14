@@ -523,11 +523,7 @@ export default {
       const car = this.$store.getters.getSelectedCar
       if(car) {
         this.selectedCarModel = car
-        this.selectedCarMake = this.carMakes.filter(el => {
-          return el.id == car.carmake
-        })[0].name
-      } 
-
+        this.selectedCarMake = car.carmake.name      } 
     },
     onChangeSelect(event) {
       // this.selectedCarModel = null
@@ -536,7 +532,7 @@ export default {
     filteringCarModel(make) {
       // Filtering Car Models By Car Make Have choosen
       const n = this.carModels.filter(elem => {
-        return elem.carmake === make
+        return elem.carmake.id === make
       })
       return n
     },
