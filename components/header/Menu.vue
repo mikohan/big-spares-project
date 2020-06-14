@@ -16,9 +16,9 @@
           <div class="main-menu__submenu">
             <ul class="menu">
               <li class="menu__item">
-                <a href="index.html" class="menu__link">
-                  Home One
-                </a>
+                <nuxt-link to="/cars" class="menu__link">
+                  Cars
+                </nuxt-link>
               </li>
               <li class="menu__item">
                 <a href="index2.html" class="menu__link">

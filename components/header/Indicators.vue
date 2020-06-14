@@ -1,7 +1,9 @@
 <template>
   <div class="header__indicators">
     <!-- <div class="indicator indicator--trigger--click"> -->
-      <div class="indicator indicator--trigger--click"  :class="{ 'indicator--open-car': carShow }">
+      <div class="indicator indicator--trigger--click"  :class="{ 'indicator--open-car': carShow }"
+        v-click-outside="closeWindow"
+        >
       <a href="/cars" class="indicator__button" @click.prevent="carShow = !carShow">
         <span class="indicator__icon">
           <svg width="32" height="32" viewBox="0 0 512 512">
@@ -108,13 +110,19 @@
             />
           </svg>
         </span>
+        
         <span v-if="selectedCarModel" class="indicator__title">Моя Машина</span>
         <span v-else class="indicator__title">Выберите машину</span>
         <span v-if="selectedCarModel" class="indicator__value">{{ selectedCarModel.name | capitalize }}</span>
         <span v-else class="indicator__value">Моя Машина</span>
       </a>
       <transition name="slide">
-        <div class="indicator__content-car">
+      <div class="indicator__content-car"
+           
+           >
+          <div class="indicator__content--x"
+            @click="carShow = false"
+            >x</div>
           <div class="account-menu">
             <form class="account-menu__form">
               <div class="account-menu__form-title">
@@ -125,6 +133,7 @@
                   >Выберите Марку</label
                 >
                 <v-select
+                  @input="selectedCarModel = ''"
                   v-model="selectedCarMake"
                   label="name"
                   :options="carMakes"
@@ -136,6 +145,7 @@
                   >Выберите Модель</label
                 >
                 <v-select
+                  @input="selectCarState"
                   v-model="selectedCarModel"
                   label="name"
                   :options="filteringCarModel(selectedCarMake.id)"
@@ -143,15 +153,7 @@
                 ></v-select>
               </div>
               <div class="form-group">
-                <label for="header-signin-email" class="sr-only"
-                  >Email address</label
-                >
-                <input
-                  id="header-signin-email"
-                  type="email"
-                  class="form-control form-control-sm"
-                  placeholder="Email address"
-                />
+                <button class="btn btn-primary btn-xs" @click.prevent="selectCarState">Выбрать</button>
               </div>
             </form>
             <div class="account-menu__divider"></div>
@@ -161,7 +163,8 @@
     </div>
 
     <div class="indicator indicator--trigger--click"
-      :class="{ 'indicator--open': loginShow }">
+      :class="{ 'indicator--open': loginShow }"
+      v-click-outside="closeLogin">
       <a href="/login" class="indicator__button"
         
         @click.prevent="loginShow = !loginShow"
@@ -468,8 +471,12 @@
 import vSelect from 'vue-select'
 import { endpointBase } from '~/config'
 import { Messages } from '~/config.logic/messages'
+import vClickOutside from 'v-click-outside'
 
 export default {
+  directives: {
+    clickOutside: vClickOutside.directive
+  },
   components: {
     vSelect
   },
@@ -481,7 +488,8 @@ export default {
       loginShow: false,
       loginMessage: null,
       selectedCarMake: 0,
-      // selectedCarModel: 0,
+      selectedCarModel: 0,
+      selectedCarButton: null,
       selected: {
         value: 1,
         label: 'option1'
@@ -490,41 +498,52 @@ export default {
     }
   },
   computed: {
-    selectedCarModel: {
-      get: function () {
-        return this.$store.getters.getSelectedCar
-      },
-      set: function(value) {
-        this.$store.dispatch('fetchSelectedCar', value)
-      }
-    },
-    carModels() {
+    carModels() { // All car models for selecting
       const carModels = this.$store.getters.getCarModels
       return carModels
     },
 
-    carMakes() {
+    carMakes() { // All car Makes for selecting
       const carMakes = this.$store.getters.getCarMakes
       return carMakes
     }
   },
   methods: {
+    closeWindow(event) { // Closing car selection when click outside
+      if (this.carShow) {
+        this.carShow = false;
+      }
+    },
+    closeLogin() { // Closing Login Selection when click outside
+      if (this.loginShow) {
+        this.loginShow = false
+      }
+    },
+    selectedCarInit() {
+      const car = this.$store.getters.getSelectedCar
+      if(car) {
+        this.selectedCarModel = car
+        this.selectedCarMake = this.carMakes.filter(el => {
+          return el.id == car.carmake
+        })[0].name
+      } 
+
+    },
     onChangeSelect(event) {
       // this.selectedCarModel = null
     },
 
     filteringCarModel(make) {
       // Filtering Car Models By Car Make Have choosen
-      console.log(make)
       const n = this.carModels.filter(elem => {
         return elem.carmake === make
       })
       return n
     },
-   // selectCarState() {
-   //   this.$store.dispatch('fetchSelectedCar', this.selectedCarModel)
-   //   this.carShow = false
-   // },
+    selectCarState() { // Dispatching car by changing model field
+      this.$store.dispatch('fetchSelectedCar', this.selectedCarModel)
+      this.carShow = false
+    },
     logIn() {
       if (this.$store.getters['login/getToken']) {
         this.loginMessage = Messages.LoginMessages.LoginAlready
@@ -556,7 +575,7 @@ export default {
     }
   },
   mounted() {
-    this.filteringCarModel(1)
+    this.selectedCarInit()
   }
 }
 </script>
@@ -615,6 +634,29 @@ export default {
     opacity: 0;
     transition: transform .2s,opacity .2s,visibility 0s .2s;
     right: 0
+}
+.indicator__content--x {
+  width: 1.4rem;
+  height: 1.4rem;
+  font-size: 1rem;
+  text-align: center;
+
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  font-weight: 200;
+  color: $font-gray;
+
+  &:hover {
+    font-weight: 500;
+    background-color: lighten($font-error, 40%);
+    border-radius: 2px;
+    color: #fff;
+
+    cursor: pointer;
+  }
+
 }
 .indicator--trigger--click.indicator--open-car .indicator__content-car,.indicator--trigger--hover:hover .indicator__content-car {
     z-index: 1;

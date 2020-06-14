@@ -44,7 +44,7 @@ export const mutations = {
 
 export const actions = {
   // Initalization action
-  nuxtServerInit(vuexContext, context) {
+  nuxtServerInit(vuexContext) {
     // Trying to get carMakes
     vuexContext.dispatch('fetchCarMakes')
     // Trying to get carModels
@@ -93,7 +93,6 @@ export const actions = {
       .catch(e => console.error('Error while loading carModels from Server', e))
   },
   fetchSelectedCar(vuexContext, context) {
-    console.log(context)
     const car = JSON.stringify(context)
     localStorage.setItem('car', car)
     Cookie.set('car', context, { expires: 1000 })
@@ -123,7 +122,7 @@ export const actions = {
       )
   },
 
-  fetchCategories(vuexContext, context) {
+  fetchCategories(vuexContext) {
     return this.$axios
       .$get(categoryEndpoint)
       .then(data => {
@@ -133,7 +132,7 @@ export const actions = {
         console.error('Error in State has occured', e.message)
       })
   },
-  fetchCategoriesFirstLevel(vuexContext, context) {
+  fetchCategoriesFirstLevel(vuexContext) {
     // Fetching First Level of Categories and depth == 1
     return this.$axios
       .$get(categoryFirstEndpoint)
@@ -171,6 +170,18 @@ export const getters = {
     return state.carMakes
   },
   getSelectedCar(state) {
+    if (typeof state.selectedCar === 'string') {
+      return JSON.parse(state.selectedCar)
+    }
     return state.selectedCar
+  },
+  getSingleCar(state) {
+    return state.selectedCar
+    //return function(slug) {
+    //  return slug
+    // return state.carModels.filter(res => {
+    //   return (res.slug = slug)
+    // })[0]
+    // }
   }
 }
