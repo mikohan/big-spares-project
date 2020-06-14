@@ -326,7 +326,7 @@ import { headerType } from '~/config.logic/header.loader'
 export default {
   data() {
     return {
-      headerType: headerType.component
+      headerType: headerType.component,
     }
   },
   computed: {
