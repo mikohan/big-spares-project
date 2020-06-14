@@ -176,12 +176,10 @@ export const getters = {
     return state.selectedCar
   },
   getSingleCar(state) {
-    return state.selectedCar
-    //return function(slug) {
-    //  return slug
-    // return state.carModels.filter(res => {
-    //   return (res.slug = slug)
-    // })[0]
-    // }
+    return function(slug) {
+      return state.carModels.find(el => {
+        return el.slug === slug
+      })
+    }
   }
 }

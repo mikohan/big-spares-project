@@ -5,7 +5,7 @@
     <div class="block faq">
       <div class="container container-xl">
         <div class="faq__header">
-          <h1 class="faq__header-title">{{ getCar }}</h1>
+          <h1 class="faq__header-title">{{ getCar.carmake.name }} {{ getCar.name | capitalize }}</h1>
         </div>
         <div class="faq__section">
           <h3 class="faq__section-title">Shipping Information</h3>
@@ -170,17 +170,16 @@
 export default {
   data() {
     return {
-      car: this.$route.params.car
+      carSlug: this.$route.params.car
     }
   },
   computed: {
     getCar() {
-      console.log(this.$store.getters.getCar)
-      // return this.$store.getters.getCar('porter2')
+      console.log(this.carSlug)
+       return this.$store.getters.getSingleCar(this.carSlug)
     }
   },
   mounted() {
   }
 }
 </script>
->
