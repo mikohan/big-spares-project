@@ -16,31 +16,48 @@
             <li
               class="breadcrumb__item breadcrumb__item--parent breadcrumb__item--first"
             >
-              <a href="index.html" class="breadcrumb__item-link">Home</a>
+              <nuxt-link :to="crumbs[0].url" class="breadcrumb__item-link">{{
+                crumbs[0].name
+              }}</nuxt-link>
             </li>
-            <li class="breadcrumb__item breadcrumb__item--parent">
-              <a href="" class="breadcrumb__item-link">Breadcrumb</a>
+
+            <li
+              class="breadcrumb__item breadcrumb__item--parent"
+              v-for="(crumb, i) in crumbsBody"
+              :key="i"
+            >
+              <nuxt-link :to="crumb.url" class="breadcrumb__item-link">{{ crumb.name }}</nuxt-link>
             </li>
+
             <li
               class="breadcrumb__item breadcrumb__item--current breadcrumb__item--last"
               aria-current="page"
             >
-              <span class="breadcrumb__item-link">Current Page</span>
+              <span class="breadcrumb__item-link">{{
+                crumbs[crumbs.length - 1].name
+              }}</span>
             </li>
+
             <li class="breadcrumb__title-safe-area" role="presentation"></li>
           </ol>
         </nav>
-        <h1 class="block-header__title">Трансмиссия {{ carModel.name }}</h1>
       </div>
     </div>
-      </div>
+  </div>
 </template>
 
 <script>
 export default {
+  props: {
+    crumbs: {
+      type: Array,
+      required: true
+    }
+  },
   computed: {
-    carModel() {
-      return this.$store.getters.getSelectedCar
+    crumbsBody() {
+      console.log(this.crumbs.slice(1, -1))
+      return this.crumbs.slice(1, -1)
     }
   }
 }
