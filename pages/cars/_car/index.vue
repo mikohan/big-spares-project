@@ -6,7 +6,7 @@
       <div class="container">
         <div class="block-split__row row no-gutters">
           <!-- Side Bar Component -->
-          <SideBarContent />
+          <SideBarContentCar />
           <div class="block-split__item block-split__item-content col-auto">
             <div class="site__body">
               <div
@@ -199,7 +199,7 @@
 
 <script>
 import { shop } from '~/helpers/shop'
-import SideBarContent from '~/components/body/SideBarContent'
+import SideBarContentCar from '~/components/body/SideBarContentCar'
 import ProductViewOptions from '~/components/body/ProductViewOptions'
 import ProductListOptionsHeader from '~/components/body/ProductListOptionsHeader'
 import ProductListItem from '~/components/body/ProductListItem'
@@ -209,7 +209,7 @@ import BradcrumbsNoTitle from '~/components/body/BradcrumbsNoTitle'
 export default {
   
   components: {
-    SideBarContent,
+    SideBarContentCar,
     ProductViewOptions,
     ProductListOptionsHeader,
     ProductListItem,
