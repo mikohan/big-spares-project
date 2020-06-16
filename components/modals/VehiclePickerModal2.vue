@@ -162,7 +162,7 @@ export default {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.2s;
+  transition: opacity 0.3s;
 }
 
 .fade-enter,
@@ -172,11 +172,14 @@ export default {
 
 .slide-enter-active,
 .slide-leave-active {
-  transition: transform 0.2s linear;
+  opacity: 1;
+  transition: transform 0.3s linear;
+  transition: opacity 0.3s linear;
 }
 
 .slide-enter,
 .slide-leave-to {
   transform: translateX(-50%) translateY(-50vw);
+  opacity: 0;
 }
 </style>
