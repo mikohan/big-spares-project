@@ -80,7 +80,7 @@
         </div>
       </div>
     </div>
-    <VehiclePickerModal v-show="false" />
+    <VehiclePickerModal />
   </div>
 </template>
 
@@ -95,6 +95,13 @@ export default {
       
       this.$store.commit('events/setVehiclePickerModal', true)
     }
+  },
+  mounted() {
+    // $(function () {
+    //     $('.filter-vehicle__button button').on('click', function () {
+    //         $('#add-vehicle-modal').modal('show');
+    //     });
+    // });
   }
 }
 </script>

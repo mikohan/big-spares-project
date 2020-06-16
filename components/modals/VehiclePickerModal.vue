@@ -1,29 +1,17 @@
 <template>
   <div>
-    
-      <!-- add-vehicle-modal -->
-      <div
-        id="add-vehicle-modal"
-        class="modal fade"
-        :class="active ? 'show' : ''"
-        :style="
-          active
-            ? { display: 'block', 'padding-right': '15px' }
-            : { display: 'none' }
-        "
-        :aria-modal="active"
-        tabindex="-1"
-        role="dialog"
-        aria-hidden="true"
-      >
-        <div class="vehicle-picker-modal modal-dialog modal-dialog-centered">
-          <transition name="bounce">
+    <!-- add-vehicle-modal -->
+    <div
+      id="add-vehicle-modal"
+      class="modal fade show"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="vehicle-picker-modal modal-dialog modal-dialog-centered">
+        <transition name="bounce">
           <div class="modal-content">
-            <button
-              @click="active = false"
-              type="button"
-              class="vehicle-picker-modal__close"
-            >
+            <button type="button" class="vehicle-picker-modal__close">
               <svg width="12" height="12">
                 <path
                   d="M10.8,10.8L10.8,10.8c-0.4,0.4-1,0.4-1.4,0L6,7.4l-3.4,3.4c-0.4,0.4-1,0.4-1.4,0l0,0c-0.4-0.4-0.4-1,0-1.4L4.6,6L1.2,2.6
@@ -112,6 +100,7 @@
               </div>
               <div class="vehicle-picker-modal__actions">
                 <button
+                @click="closeWindow"
                   type="button"
                   class="btn btn-sm btn-secondary vehicle-picker-modal__close-button"
                 >
@@ -123,15 +112,10 @@
               </div>
             </div>
           </div>
-          </transition>
-        </div>
+        </transition>
       </div>
-      <!-- add-vehicle-modal / end -->
-      <div
-        v-if="active"
-        class="modal-backdrop fade"
-        :class="active ? 'show' : ''"
-      ></div>
+    </div>
+    <!-- add-vehicle-modal / end -->
     
   </div>
 </template>
@@ -139,45 +123,23 @@
 <script>
 export default {
   name: 'VehiclePickerModal',
-  props: {},
-  computed: {
-    active: {
-      get() {
-        console.log(this.$store.getters['events/getVehiclePickerModal'])
-        return this.$store.getters['events/getVehiclePickerModal']
-      },
-      set(value) {
-        this.$store.commit('events/setVehiclePickerModal', value)
-      }
+  data() {
+    return {
+      active: false,
+      close: false,
     }
   },
+
   methods: {
     closeWindow() {
-      this.active = false
+      console.log(this.close)
+      document.getElementsById("#add-vehicle-modal").classList.remove("show")
     }
   },
   mounted() {
-    console.log(this.active, 'in mounted')
+    // console.log(this.active, 'in mounted')
   }
 }
 </script>
 
-<style lang="scss">
-.bounce-enter-active {
-  animation: bounce-in .5s;
-}
-.bounce-leave-active {
-  animation: bounce-in .5s reverse;
-}
-@keyframes bounce-in {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.5);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-</style>
+

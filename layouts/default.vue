@@ -1,16 +1,17 @@
 <template>
   <div>
     <HeaderComponent />
+     <VehiclePickerModal
+     />
     <nuxt />
     <FooterRed />
-    <VehiclePickerModal
-     />
+   
      
   </div>
 </template>
 
 <script>
-import VehiclePickerModal from '~/components/modals/VehiclePickerModal'
+import VehiclePickerModal from '~/components/modals/VehiclePickerModal2'
 import Vodal from 'vodal'
 
 import { headerType } from '../config.logic/header.loader.js'
@@ -45,7 +46,10 @@ export default {
   },
  
 
-  mounted() {}
+  mounted() {
+
+    
+  }
 }
 </script>
 
