@@ -71,7 +71,8 @@
               </li>
             </ul>
             <div class="filter-vehicle__button">
-              <button type="button" class="btn btn-xs btn-secondary">
+              <button type="button" class="btn btn-xs btn-secondary"
+              @click="showPicker">
                 Add Vehicle
               </button>
             </div>
@@ -79,11 +80,30 @@
         </div>
       </div>
     </div>
+    <VehiclePickerModal />
   </div>
 </template>
 
 <script>
-export default {}
+import VehiclePickerModal from '~/components/modals/VehiclePickerModal'
+export default {
+  components: {
+    VehiclePickerModal,
+  },
+  methods: {
+    showPicker() {
+      
+      this.$store.commit('events/setVehiclePickerModal', true)
+    }
+  },
+  mounted() {
+    // $(function () {
+    //     $('.filter-vehicle__button button').on('click', function () {
+    //         $('#add-vehicle-modal').modal('show');
+    //     });
+    // });
+  }
+}
 </script>
 
 <style></style>

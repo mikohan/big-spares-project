@@ -1,21 +1,27 @@
 <template>
   <div>
     <HeaderComponent />
+     <VehiclePickerModal
+     />
     <nuxt />
     <FooterRed />
+   
+     
   </div>
 </template>
 
 <script>
+import VehiclePickerModal from '~/components/modals/VehiclePickerModal2'
+import Vodal from 'vodal'
+
 import { headerType } from '../config.logic/header.loader.js'
 const HeaderComponent = () => {
   if (headerType.component === 'classic') {
     return import('~/components/header/classic/HeaderBlue')
   } else {
-    return import ('~/components/header/spaceship/HeaderRed')
+    return import('~/components/header/spaceship/HeaderRed')
   }
 }
-
 
 import FooterRed from '~/components/FooterRed'
 export default {
@@ -23,12 +29,30 @@ export default {
   components: {
     // HeaderRed,
     HeaderComponent,
-    FooterRed
+    FooterRed,
+    VehiclePickerModal,
+    Vodal,
   },
-  
+  data() {
+    return {
+      show: false
+    }
+  },
+  computed: {
+    vehiclePicker() {
+      // console.log(this.$store.getters['events/getVehiclePickerModal'])
+      return this.$store.getters['events/getVehiclePickerModal']
+    }
+  },
+ 
 
-  mounted() {}
+  mounted() {
+
+    
+  }
 }
 </script>
 
-<style></style>
+<style>
+
+</style>

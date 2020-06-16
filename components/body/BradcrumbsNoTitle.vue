@@ -56,7 +56,6 @@ export default {
   },
   computed: {
     crumbsBody() {
-      console.log(this.crumbs.slice(1, -1))
       return this.crumbs.slice(1, -1)
     }
   }

@@ -22,28 +22,14 @@
             data-collapse-opened-class="filter--opened"
           >
             <div class="widget__header widget-filters__header">
-              <h4>Filters</h4>
+              <h4>Categories</h4>
             </div>
             <div class="widget-filters__list">
-              <!-- Filter Cars Component -->
-              <FilterSelectVehicle />
+              
               <!-- Filter Categories Component -->
               <FilterCategories />
               
-              <!-- Filter Price Component -->
-              <FilterPrice />
-
-              <!-- Filter Brand Square Component -->
-              <FilterBrandSquare />
-
-              <!-- Filter Brand Circle Component -->
-              <FilterBrandCircle />
-
-              <!-- Filter Rating Component -->
-              <FilterRating />
-
-              <!-- Filter Color Component -->
-              <FilterColor />
+              
 
             </div>
             <div class="widget-filters__actions d-flex">
