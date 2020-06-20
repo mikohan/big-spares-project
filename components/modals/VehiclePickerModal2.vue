@@ -172,14 +172,12 @@ export default {
 
 .slide-enter-active,
 .slide-leave-active {
-  opacity: 1;
-  transition: transform 0.3s linear;
-  transition: opacity 0.3s linear;
+  transition: transform 0.3s , opacity 0.3s;
 }
 
 .slide-enter,
 .slide-leave-to {
-  transform: translateX(-50%) translateY(-50vw);
+  transform: translateX(-50%) translateY(-20vw);
   opacity: 0;
 }
 </style>
