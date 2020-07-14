@@ -1,12 +1,9 @@
 <template>
   <div>
     <HeaderComponent />
-     <VehiclePickerModal
-     />
+    <VehiclePickerModal />
     <nuxt />
-    <FooterRed />
-   
-     
+    <FooterRed />ы
   </div>
 </template>
 
@@ -31,7 +28,7 @@ export default {
     HeaderComponent,
     FooterRed,
     VehiclePickerModal,
-    Vodal,
+    Vodal
   },
   data() {
     return {
@@ -44,15 +41,9 @@ export default {
       return this.$store.getters['events/getVehiclePickerModal']
     }
   },
- 
 
-  mounted() {
-
-    
-  }
+  mounted() {}
 }
 </script>
 
-<style>
-
-</style>
+<style></style>
