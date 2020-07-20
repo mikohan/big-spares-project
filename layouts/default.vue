@@ -3,7 +3,7 @@
     <HeaderComponent />
     <VehiclePickerModal />
     <nuxt />
-    <FooterRed />ы
+    <FooterRed />
   </div>
 </template>
 
