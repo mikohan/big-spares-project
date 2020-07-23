@@ -6,7 +6,8 @@ import { endpointBase } from '../config' // Endpoint switcher server remote or l
 
 const categoryEndpoint = `${endpointBase}/api/product/categorytree/`
 const categoryFirstEndpoint = `${endpointBase}/api/product/categoryfirst/`
-const productEndpoint = `${endpointBase}/api/product/singleproduct/`
+// const productEndpoint = `${endpointBase}/api/product/singleproduct/`
+const productEndpoint = `http://localhost:8000/api/product/singleproduct`
 const carModelList = `http://localhost:8000/api/product/getcarmodelsiteall/` // Dont forget use it tomorrow
 const carMakesUrl = `http://localhost:8000/api/product/getcarmakes/` // Endpoint for Getting All Car Makers
 
@@ -108,11 +109,13 @@ export const actions = {
       .catch(e => console.error('Error while loading carMakes from Server', e))
   },
   fetchSingleProduct(vuexContext) {
-    const id = 2285
+    const id = 6515
     return this.$axios
       .$get(`${productEndpoint}/${id}/`)
       .then(product => {
+        console.log(`${productEndpoint}/${id}/`)
         vuexContext.commit('setSingleProduct', product)
+        //console.log(product)
       })
       .catch(e =>
         console.error(

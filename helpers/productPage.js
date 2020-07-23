@@ -98,8 +98,8 @@ export const productPage = function () {
           return {
             src: element.href,
             msrc: element.href,
-            w: 700,
-            h: 700
+            w: 1280,
+            h: 854
           };
         });
 

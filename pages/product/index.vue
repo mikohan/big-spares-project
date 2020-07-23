@@ -721,3 +721,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.owl-stage-outer {
+  margin-top: 3rem;
+}
+</style>
