@@ -27,6 +27,8 @@ export const productPage = function () {
         dots: false,
         margin: 10,
         rtl: isRTL(),
+        autoWidth: true, // Option for change thumbnail size
+        //  Also needs to change css class in Product page
       };
       const layoutOptions = {
         'product-sidebar': {
@@ -118,8 +120,19 @@ export const productPage = function () {
 
         const photoSwipeGallery = new PhotoSwipe($('.pswp')[0], PhotoSwipeUI_Default, photoSwipeImages, photoSwipeOptions);
 
-        photoSwipeGallery.listen('beforeChange', () => {
+        photoSwipeGallery.listen('beforeChange', (index, item) => {
           image.data('owl.carousel').to(photoSwipeGallery.getCurrentIndex(), 0, true);
+        });
+        photoSwipeGallery.listen('gettingData', function (index, item) {
+          if (item.w < 1 || item.h < 1) {
+            var img = new Image();
+            img.onload = function () {
+              item.w = this.width;
+              item.h = this.height;
+              pswpGallery.updateSize(true);
+            };
+            img.src = item.src;
+          }
         });
 
         photoSwipeGallery.init();

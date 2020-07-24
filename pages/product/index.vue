@@ -62,7 +62,7 @@
                           :href="img.img800"
                           target="_blank"
                         >
-                          <img :src="img.img800" alt="" />
+                          <img :src="img.img800" :alt="getProduct.name" />
                         </a>
                       </div>
                     </div>
@@ -75,7 +75,7 @@
                           class="product-gallery__thumbnails-item"
                           target="_blank"
                         >
-                          <img :src="img.img150" alt="" />
+                          <img :src="img.img150" :alt="getProduct.name" />
                         </a>
                       </div>
                     </div>
@@ -725,5 +725,8 @@ export default {
 <style lang="scss">
 .owl-stage-outer {
   margin-top: 3rem;
+}
+.product-gallery__thumbnails-item {
+  width:7rem;
 }
 </style>
