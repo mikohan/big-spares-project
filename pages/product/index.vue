@@ -708,6 +708,7 @@ export default {
   },
   computed: {
     getProduct() {
+      
       return this.$store.getters.getSingleProduct
     }
   },
