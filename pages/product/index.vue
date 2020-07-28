@@ -707,8 +707,7 @@ export default {
     ProductTabs
   },
   computed: {
-    getProduct() {
-      
+    getProduct() {      
       return this.$store.getters.getSingleProduct
     }
   },
