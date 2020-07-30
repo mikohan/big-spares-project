@@ -706,6 +706,7 @@ export default {
     RelatedProducts,
     ProductTabs
   },
+  
   computed: {
     getProduct() {      
       return this.$store.getters.getSingleProduct
