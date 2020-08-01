@@ -705,7 +705,7 @@ export default {
   components: {
     RelatedProducts,
     ProductTabs
-  },  
+  },
   computed: {
     getProduct() {      
       return this.$store.getters.getSingleProduct
