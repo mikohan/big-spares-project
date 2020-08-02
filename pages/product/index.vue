@@ -715,6 +715,7 @@ export default {
     if (Object.keys(context.store.getters.getSingleProduct).length === 0) {
       await context.store.dispatch('fetchSingleProduct')
     }
+    
   },
   mounted() {
     productPage()
