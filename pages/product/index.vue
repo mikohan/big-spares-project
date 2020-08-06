@@ -5,22 +5,14 @@
       <div class="block-header block-header--has-breadcrumb">
         <div class="container">
           <div class="block-header__body">
-            <nav
-              class="breadcrumb block-header__breadcrumb"
-              aria-label="breadcrumb"
-            >
+            <nav class="breadcrumb block-header__breadcrumb" aria-label="breadcrumb">
               <ol class="breadcrumb__list">
-                <li
-                  class="breadcrumb__spaceship-safe-area"
-                  role="presentation"
-                ></li>
-                <li
-                  class="breadcrumb__item breadcrumb__item--parent breadcrumb__item--first"
-                >
+                <li class="breadcrumb__spaceship-safe-area" role="presentation"></li>
+                <li class="breadcrumb__item breadcrumb__item--parent breadcrumb__item--first">
                   <a href="index.html" class="breadcrumb__item-link">Home</a>
                 </li>
                 <li class="breadcrumb__item breadcrumb__item--parent">
-                  <a href="" class="breadcrumb__item-link">Breadcrumb</a>
+                  <a href class="breadcrumb__item-link">Breadcrumb</a>
                 </li>
                 <li
                   class="breadcrumb__item breadcrumb__item--current breadcrumb__item--last"
@@ -81,32 +73,22 @@
                     </div>
                   </div>
                   <div class="product__header">
-                    <h1 class="product__title">
-                      {{ getProduct.name }} {{ getProduct.name2 }}
-                    </h1>
+                    <h1 class="product__title">{{ getProduct.name }} {{ getProduct.name2 }}</h1>
                     <div class="product__subtitle">
                       <div class="product__rating">
                         <div class="product__rating-stars">
                           <div class="rating">
                             <div class="rating__body">
-                              <div
-                                class="rating__star rating__star--active"
-                              ></div>
-                              <div
-                                class="rating__star rating__star--active"
-                              ></div>
-                              <div
-                                class="rating__star rating__star--active"
-                              ></div>
-                              <div
-                                class="rating__star rating__star--active"
-                              ></div>
+                              <div class="rating__star rating__star--active"></div>
+                              <div class="rating__star rating__star--active"></div>
+                              <div class="rating__star rating__star--active"></div>
+                              <div class="rating__star rating__star--active"></div>
                               <div class="rating__star"></div>
                             </div>
                           </div>
                         </div>
                         <div class="product__rating-label">
-                          <a href="">3.5 on 7 reviews</a>
+                          <a href>3.5 on 7 reviews</a>
                         </div>
                       </div>
                       <div
@@ -115,14 +97,10 @@
                         <div class="status-badge__body">
                           <div class="status-badge__icon">
                             <svg width="13" height="13">
-                              <path
-                                d="M12,4.4L5.5,11L1,6.5l1.4-1.4l3.1,3.1L10.6,3L12,4.4z"
-                              />
+                              <path d="M12,4.4L5.5,11L1,6.5l1.4-1.4l3.1,3.1L10.6,3L12,4.4z" />
                             </svg>
                           </div>
-                          <div class="status-badge__text">
-                            Part Fit for 2011 Ford Focus S
-                          </div>
+                          <div class="status-badge__text">Part Fit for 2011 Ford Focus S</div>
                           <div
                             class="status-badge__tooltip"
                             tabindex="0"
@@ -143,28 +121,39 @@
                     <div class="product__features">
                       <div class="product__features-title">Key Features:</div>
                       <ul>
-                        <li>Speed: <span>750 RPM</span></li>
-                        <li>Power Source: <span>Cordless-Electric</span></li>
-                        <li>Battery Cell Type: <span>Lithium</span></li>
-                        <li>Voltage: <span>20 Volts</span></li>
-                        <li>Battery Capacity: <span>2 Ah</span></li>
+                        <li>
+                          Speed:
+                          <span>750 RPM</span>
+                        </li>
+                        <li>
+                          Power Source:
+                          <span>Cordless-Electric</span>
+                        </li>
+                        <li>
+                          Battery Cell Type:
+                          <span>Lithium</span>
+                        </li>
+                        <li>
+                          Voltage:
+                          <span>20 Volts</span>
+                        </li>
+                        <li>
+                          Battery Capacity:
+                          <span>2 Ah</span>
+                        </li>
                       </ul>
                       <div class="product__features-link">
-                        <a href="">See Full Specification</a>
+                        <a href>See Full Specification</a>
                       </div>
                     </div>
                   </div>
                   <div class="product__info">
                     <div class="product__info-card">
                       <div class="product__info-body">
-                        <div class="product__badge tag-badge tag-badge--sale">
-                          Sale
-                        </div>
+                        <div class="product__badge tag-badge tag-badge--sale">Sale</div>
                         <div class="product__prices-stock">
                           <div class="product__prices">
-                            <div class="product__price product__price--current">
-                              $1,499.00
-                            </div>
+                            <div class="product__price product__price--current">$1,499.00</div>
                           </div>
                           <div
                             class="status-badge status-badge--style--success product__stock status-badge--has-text"
@@ -189,7 +178,9 @@
                               </tr>
                               <tr>
                                 <th>Brand</th>
-                                <td><a href="">Brandix</a></td>
+                                <td>
+                                  <a href>Brandix</a>
+                                </td>
                               </tr>
                               <tr>
                                 <th>Country</th>
@@ -216,9 +207,7 @@
                                       name="material"
                                       class="input-radio-label__input"
                                     />
-                                    <span class="input-radio-label__title"
-                                      >Steel</span
-                                    >
+                                    <span class="input-radio-label__title">Steel</span>
                                   </label>
                                   <label class="input-radio-label__item">
                                     <input
@@ -226,9 +215,7 @@
                                       name="material"
                                       class="input-radio-label__input"
                                     />
-                                    <span class="input-radio-label__title"
-                                      >Aluminium</span
-                                    >
+                                    <span class="input-radio-label__title">Aluminium</span>
                                   </label>
                                   <label class="input-radio-label__item">
                                     <input
@@ -237,9 +224,7 @@
                                       class="input-radio-label__input"
                                       disabled
                                     />
-                                    <span class="input-radio-label__title"
-                                      >Thorium</span
-                                    >
+                                    <span class="input-radio-label__title">Thorium</span>
                                   </label>
                                 </div>
                               </div>
@@ -293,9 +278,7 @@
                         </div>
                       </div>
                       <div class="product__actions">
-                        <div
-                          class="product__actions-item product__actions-item--quantity"
-                        >
+                        <div class="product__actions-item product__actions-item--quantity">
                           <div class="input-number">
                             <input
                               class="input-number__input form-control form-control-lg"
@@ -307,12 +290,8 @@
                             <div class="input-number__sub"></div>
                           </div>
                         </div>
-                        <div
-                          class="product__actions-item product__actions-item--addtocart"
-                        >
-                          <button class="btn btn-primary btn-lg btn-block">
-                            Add to cart
-                          </button>
+                        <div class="product__actions-item product__actions-item--addtocart">
+                          <button class="btn btn-primary btn-lg btn-block">Add to cart</button>
                         </div>
                         <div class="product__actions-divider"></div>
                         <button
@@ -348,35 +327,27 @@
                       <div class="product__tags-and-share-links">
                         <div class="product__tags tags tags--sm">
                           <div class="tags__list">
-                            <a href="">Brake Kit</a>
-                            <a href="">Brandix</a>
-                            <a href="">Filter</a>
-                            <a href="">Bumper</a>
-                            <a href="">Transmission</a>
-                            <a href="">Hood</a>
+                            <a href>Brake Kit</a>
+                            <a href>Brandix</a>
+                            <a href>Filter</a>
+                            <a href>Bumper</a>
+                            <a href>Transmission</a>
+                            <a href>Hood</a>
                           </div>
                         </div>
                         <div class="product__share-links share-links">
                           <ul class="share-links__list">
-                            <li
-                              class="share-links__item share-links__item--type--like"
-                            >
-                              <a href="">Like</a>
+                            <li class="share-links__item share-links__item--type--like">
+                              <a href>Like</a>
                             </li>
-                            <li
-                              class="share-links__item share-links__item--type--tweet"
-                            >
-                              <a href="">Tweet</a>
+                            <li class="share-links__item share-links__item--type--tweet">
+                              <a href>Tweet</a>
                             </li>
-                            <li
-                              class="share-links__item share-links__item--type--pin"
-                            >
-                              <a href="">Pin It</a>
+                            <li class="share-links__item share-links__item--type--pin">
+                              <a href>Pin It</a>
                             </li>
-                            <li
-                              class="share-links__item share-links__item--type--counter"
-                            >
-                              <a href="">4K</a>
+                            <li class="share-links__item share-links__item--type--counter">
+                              <a href>4K</a>
                             </li>
                           </ul>
                         </div>
@@ -438,18 +409,11 @@
                             </svg>
                           </div>
                           <div class="shop-features__info">
-                            <div class="shop-features__item-title">
-                              Free Shipping
-                            </div>
-                            <div class="shop-features__item-subtitle">
-                              For orders from $50
-                            </div>
+                            <div class="shop-features__item-title">Free Shipping</div>
+                            <div class="shop-features__item-subtitle">For orders from $50</div>
                           </div>
                         </li>
-                        <li
-                          class="shop-features__divider"
-                          role="presentation"
-                        ></li>
+                        <li class="shop-features__divider" role="presentation"></li>
                         <li class="shop-features__item">
                           <div class="shop-features__item-icon">
                             <svg width="48" height="48" viewBox="0 0 48 48">
@@ -511,18 +475,11 @@
                             </svg>
                           </div>
                           <div class="shop-features__info">
-                            <div class="shop-features__item-title">
-                              Support 24/7
-                            </div>
-                            <div class="shop-features__item-subtitle">
-                              Call us anytime
-                            </div>
+                            <div class="shop-features__item-title">Support 24/7</div>
+                            <div class="shop-features__item-subtitle">Call us anytime</div>
                           </div>
                         </li>
-                        <li
-                          class="shop-features__divider"
-                          role="presentation"
-                        ></li>
+                        <li class="shop-features__divider" role="presentation"></li>
                         <li class="shop-features__item">
                           <div class="shop-features__item-icon">
                             <svg width="48" height="48" viewBox="0 0 48 48">
@@ -568,18 +525,11 @@
                             </svg>
                           </div>
                           <div class="shop-features__info">
-                            <div class="shop-features__item-title">
-                              100% Safety
-                            </div>
-                            <div class="shop-features__item-subtitle">
-                              Only secure payments
-                            </div>
+                            <div class="shop-features__item-title">100% Safety</div>
+                            <div class="shop-features__item-subtitle">Only secure payments</div>
                           </div>
                         </li>
-                        <li
-                          class="shop-features__divider"
-                          role="presentation"
-                        ></li>
+                        <li class="shop-features__divider" role="presentation"></li>
                         <li class="shop-features__item">
                           <div class="shop-features__item-icon">
                             <svg width="48" height="48" viewBox="0 0 48 48">
@@ -612,18 +562,11 @@
                             </svg>
                           </div>
                           <div class="shop-features__info">
-                            <div class="shop-features__item-title">
-                              Hot Offers
-                            </div>
-                            <div class="shop-features__item-subtitle">
-                              Discounts up to 90%
-                            </div>
+                            <div class="shop-features__item-title">Hot Offers</div>
+                            <div class="shop-features__item-subtitle">Discounts up to 90%</div>
                           </div>
                         </li>
-                        <li
-                          class="shop-features__divider"
-                          role="presentation"
-                        ></li>
+                        <li class="shop-features__divider" role="presentation"></li>
                       </ul>
                     </div>
                   </div>
@@ -653,19 +596,10 @@
         <div class="pswp__ui pswp__ui--hidden">
           <div class="pswp__top-bar">
             <div class="pswp__counter"></div>
-            <button
-              class="pswp__button pswp__button--close"
-              title="Close (Esc)"
-            ></button>
+            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
             <!--<button class="pswp__button pswp__button&#45;&#45;share" title="Share"></button>-->
-            <button
-              class="pswp__button pswp__button--fs"
-              title="Toggle fullscreen"
-            ></button>
-            <button
-              class="pswp__button pswp__button--zoom"
-              title="Zoom in/out"
-            ></button>
+            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
             <div class="pswp__preloader">
               <div class="pswp__preloader__icn">
                 <div class="pswp__preloader__cut">
@@ -674,19 +608,11 @@
               </div>
             </div>
           </div>
-          <div
-            class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"
-          >
+          <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
             <div class="pswp__share-tooltip"></div>
           </div>
-          <button
-            class="pswp__button pswp__button--arrow--left"
-            title="Previous (arrow left)"
-          ></button>
-          <button
-            class="pswp__button pswp__button--arrow--right"
-            title="Next (arrow right)"
-          ></button>
+          <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+          <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
           <div class="pswp__caption">
             <div class="pswp__caption__center"></div>
           </div>
@@ -694,6 +620,7 @@
       </div>
     </div>
     <!-- photoswipe / end -->
+    <!--some comment-->
   </div>
 </template>
 
@@ -707,14 +634,14 @@ export default {
     ProductTabs
   },
   computed: {
-    getProduct() {      
+    getProduct() {
       return this.$store.getters.getSingleProduct
     }
   },
   async fetch(context) {
     if (Object.keys(context.store.getters.getSingleProduct).length === 0) {
       await context.store.dispatch('fetchSingleProduct')
-    }    
+    }
   },
   mounted() {
     productPage()
@@ -727,6 +654,6 @@ export default {
   margin-top: 3rem;
 }
 .product-gallery__thumbnails-item {
-  width:7rem;
+  width: 7rem;
 }
 </style>
