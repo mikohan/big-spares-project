@@ -620,7 +620,6 @@
       </div>
     </div>
     <!-- photoswipe / end -->
-    <!--some comment-->
   </div>
 </template>
 
