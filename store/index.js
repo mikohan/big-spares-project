@@ -47,6 +47,7 @@ export const actions = {
   // Initalization action
   nuxtServerInit(vuexContext) {
     // Trying to get carMakes
+
     vuexContext.dispatch('fetchCarMakes')
     // Trying to get carModels
     vuexContext.dispatch('fetchCarModels')
@@ -165,7 +166,7 @@ export const getters = {
     return state.categoriesFirstLevel
   },
   getCatBySlug(state) {
-    return function(slug) {
+    return function (slug) {
       return res
     }
   },
@@ -179,7 +180,7 @@ export const getters = {
     return state.selectedCar
   },
   getSingleCar(state) {
-    return function(slug) {
+    return function (slug) {
       return state.carModels.find(el => {
         return el.slug === slug
       })
