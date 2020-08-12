@@ -47,7 +47,6 @@ export const actions = {
   // Initalization action
   nuxtServerInit(vuexContext) {
     // Trying to get carMakes
-
     vuexContext.dispatch('fetchCarMakes')
     // Trying to get carModels
     vuexContext.dispatch('fetchCarModels')
