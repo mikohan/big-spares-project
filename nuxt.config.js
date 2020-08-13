@@ -9,6 +9,7 @@ export default {
 
   /*
    ** Headers of the page
+   
    */
 
   head: {
@@ -134,6 +135,6 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) { }
   }
 }
