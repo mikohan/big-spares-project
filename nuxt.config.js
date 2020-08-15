@@ -8,7 +8,8 @@ export default {
   },
 
   /*
-   ** Headers of the page   
+   ** Headers of the page
+      
    */
 
   head: {
