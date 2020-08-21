@@ -9,7 +9,6 @@ export default {
 
   /*
    ** Headers of the page
-   added some comments here
    */
 
   head: {
