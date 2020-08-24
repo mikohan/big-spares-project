@@ -9,7 +9,7 @@ export default {
 
   /*
    ** Headers of the page
-   some commints
+   
    */
 
   head: {
