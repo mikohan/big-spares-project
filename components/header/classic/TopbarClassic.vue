@@ -2,19 +2,19 @@
   <div class="header__topbar-classic">
     <div class="topbar topbar--classic">
       <div class="topbar__item-text">
-        <a class="topbar__link" href="about-us.html">About Us</a>
+        <nuxt-link class="topbar__link" to="/about">О Компании</nuxt-link>
       </div>
       <div class="topbar__item-text">
-        <a class="topbar__link" href="contact-us-v1.html">Contacts</a>
+        <nuxt-link class="topbar__link" to="/contacts">Contacts</nuxt-link>
       </div>
       <div class="topbar__item-text">
-        <a class="topbar__link" href="">Store Location</a>
+        <nuxt-link class="topbar__link" to="/contacts">Store Location</nuxt-link>
       </div>
       <div class="topbar__item-text">
-        <a class="topbar__link" href="track-order.html">Track Order</a>
+        <nuxt-link class="topbar__link" to="/trackorder">Track Order</nuxt-link>
       </div>
       <div class="topbar__item-text">
-        <a class="topbar__link" href="blog-classic-right-sidebar.html">Blog</a>
+        <nuxt-link class="topbar__link" to="/blog">Blog</nuxt-link>
       </div>
       <div class="topbar__item-spring"></div>
       <TopbarEndButtons />

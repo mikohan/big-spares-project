@@ -1,9 +1,11 @@
 <template>
   <div class="header__indicators">
     <!-- <div class="indicator indicator--trigger--click"> -->
-      <div class="indicator indicator--trigger--click"  :class="{ 'indicator--open-car': carShow }"
-        v-click-outside="closeWindow"
-        >
+    <div
+      class="indicator indicator--trigger--click"
+      :class="{ 'indicator--open-car': carShow }"
+      v-click-outside="closeWindow"
+    >
       <a href="/cars" class="indicator__button" @click.prevent="carShow = !carShow">
         <span class="indicator__icon">
           <svg width="32" height="32" viewBox="0 0 512 512">
@@ -110,28 +112,23 @@
             />
           </svg>
         </span>
-        
+
         <span v-if="selectedCarModel" class="indicator__title">Моя Машина</span>
         <span v-else class="indicator__title">Выберите машину</span>
-        <span v-if="selectedCarModel" class="indicator__value">{{ selectedCarModel.name | capitalize }}</span>
+        <span
+          v-if="selectedCarModel"
+          class="indicator__value"
+        >{{ selectedCarModel.name | capitalize }}</span>
         <span v-else class="indicator__value">Моя Машина</span>
       </a>
       <transition name="slide">
-      <div class="indicator__content-car"
-           
-           >
-          <div class="indicator__content--x"
-            @click="carShow = false"
-            >x</div>
+        <div class="indicator__content-car">
+          <div class="indicator__content--x" @click="carShow = false">x</div>
           <div class="account-menu">
             <form class="account-menu__form">
-              <div class="account-menu__form-title">
-                Выберите Машину
-              </div>
+              <div class="account-menu__form-title">Выберите Машину</div>
               <div class="account-menu__form--car-input">
-                <label class="accont-menu__form--car-label"
-                  >Выберите Марку</label
-                >
+                <label class="accont-menu__form--car-label">Выберите Марку</label>
                 <v-select
                   @input="selectedCarModel = ''"
                   v-model="selectedCarMake"
@@ -141,9 +138,7 @@
                 ></v-select>
               </div>
               <div class="account-menu__form--car-input">
-                <label class="accont-menu__form--car-label"
-                  >Выберите Модель</label
-                >
+                <label class="accont-menu__form--car-label">Выберите Модель</label>
                 <v-select
                   @input="selectCarState"
                   v-model="selectedCarModel"
@@ -162,13 +157,12 @@
       </transition>
     </div>
 
-    <div class="indicator indicator--trigger--click"
+    <div
+      class="indicator indicator--trigger--click"
       :class="{ 'indicator--open': loginShow }"
-      v-click-outside="closeLogin">
-      <a href="/login" class="indicator__button"
-        
-        @click.prevent="loginShow = !loginShow"
-        >
+      v-click-outside="closeLogin"
+    >
+      <a href="/login" class="indicator__button" @click.prevent="loginShow = !loginShow">
         <span class="indicator__icon">
           <svg width="30" height="30" viewBox="0 0 350 350">
             <path
@@ -230,16 +224,13 @@
       <div class="indicator__content">
         <div class="account-menu">
           <form class="account-menu__form">
-            <div v-if="loginMessage" class="account-menu__form-title login__error">
-              {{ loginMessage }}
-            </div>
-            <div v-else class="account-menu__form-title">
-              Log In to Your Account
-            </div>
+            <div
+              v-if="loginMessage"
+              class="account-menu__form-title login__error"
+            >{{ loginMessage }}</div>
+            <div v-else class="account-menu__form-title">Log In to Your Account</div>
             <div class="form-group">
-              <label for="header-signin-email" class="sr-only"
-                >Email address</label
-              >
+              <label for="header-signin-email" class="sr-only">Email address</label>
               <input
                 v-model="username"
                 id="header-signin-email"
@@ -249,9 +240,7 @@
               />
             </div>
             <div class="form-group">
-              <label for="header-signin-password" class="sr-only"
-                >Password</label
-              >
+              <label for="header-signin-password" class="sr-only">Password</label>
               <div class="account-menu__form-forgot">
                 <input
                   v-model="password"
@@ -260,60 +249,55 @@
                   class="form-control form-control-sm"
                   placeholder="Password"
                 />
-                <nuxt-link to="/login" class="account-menu__form-forgot-link"
-                  >Forgot?</nuxt-link>
+                <nuxt-link to="/login" class="account-menu__form-forgot-link">Forgot?</nuxt-link>
               </div>
             </div>
             <div class="form-group account-menu__form-button">
-              <button type="submit" class="btn btn-primary btn-sm"
-                                    @click.prevent="logIn"
-
-                >
-                Login
-              </button>
+              <button type="submit" class="btn btn-primary btn-sm" @click.prevent="logIn">Login</button>
             </div>
             <div class="account-menu__form-link">
               <nuxt-link to="/login">Create An Account</nuxt-link>
             </div>
           </form>
           <div class="account-menu__divider"></div>
-          <a href="" class="account-menu__user">
+          <a href class="account-menu__user">
             <div class="account-menu__user-avatar">
-              <img :src="require('~/static/images/avatars/avatar-4.jpg')" alt="" />
+              <img :src="require('~/static/images/avatars/avatar-4.jpg')" alt />
             </div>
             <div class="account-menu__user-info">
               <div class="account-menu__user-name">Ryan Ford</div>
-              <div class="account-menu__user-email">
-                red-parts@example.com
-              </div>
+              <div class="account-menu__user-email">red-parts@example.com</div>
             </div>
           </a>
           <div class="account-menu__divider"></div>
           <ul class="account-menu__links">
-            <li><nuxt-link to="/account/dashboard"
-                           @click.native="toggleLoginShow">Dashboard</nuxt-link></li>
-            <li><nuxt-link to="/account/garage"
-                @click.native="toggleLoginShow">Garage</nuxt-link></li>
-            <li><nuxt-link to="/account/profile"
-                @click.native="toggleLoginShow">Edit Profile</nuxt-link></li>
-            <li><nuxt-link to="/account/orders"
-                @click.native="toggleLoginShow">Order History</nuxt-link></li>
-            <li><nuxt-link to="/account/addresses"
-                @click.native="toggleLoginShow">Addresses</nuxt-link></li>
+            <li>
+              <nuxt-link to="/account/dashboard" @click.native="toggleLoginShow">Dashboard</nuxt-link>
+            </li>
+            <li>
+              <nuxt-link to="/account/garage" @click.native="toggleLoginShow">Garage</nuxt-link>
+            </li>
+            <li>
+              <nuxt-link to="/account/profile" @click.native="toggleLoginShow">Edit Profile</nuxt-link>
+            </li>
+            <li>
+              <nuxt-link to="/account/orders" @click.native="toggleLoginShow">Order History</nuxt-link>
+            </li>
+            <li>
+              <nuxt-link to="/account/addresses" @click.native="toggleLoginShow">Addresses</nuxt-link>
+            </li>
           </ul>
           <div class="account-menu__divider"></div>
           <ul class="account-menu__links">
-            <li><a href="/account/logout"
-                @click.prevent="logOut">Logout</a></li>
+            <li>
+              <a href="/account/logout" @click.prevent="logOut">Logout</a>
+            </li>
           </ul>
         </div>
       </div>
     </div>
     <div class="indicator">
-      <a
-        href="wishlist.html"
-        class="indicator__button indicator__button--small-padding"
-      >
+      <a href="wishlist.html" class="indicator__button indicator__button--small-padding">
         <span class="indicator__icon indicator__icon--heart">
           <svg class="indicator__svg--heart" viewBox="0 -28 512.001 512">
             <path
@@ -346,14 +330,12 @@
             <li class="dropcart__item">
               <div class="dropcart__item-image">
                 <a href="product-full.html">
-                  <img src="images/products/product-4-70x70.jpg" alt="" />
+                  <img src="images/products/product-4-70x70.jpg" alt />
                 </a>
               </div>
               <div class="dropcart__item-info">
                 <div class="dropcart__item-name">
-                  <a href="product-full.html"
-                    >Glossy Gray 19" Aluminium Wheel AR-19</a
-                  >
+                  <a href="product-full.html">Glossy Gray 19" Aluminium Wheel AR-19</a>
                 </div>
                 <ul class="dropcart__item-features">
                   <li>Color: Yellow</li>
@@ -378,14 +360,12 @@
             <li class="dropcart__item">
               <div class="dropcart__item-image">
                 <a href="product-full.html">
-                  <img src="images/products/product-2-70x70.jpg" alt="" />
+                  <img src="images/products/product-2-70x70.jpg" alt />
                 </a>
               </div>
               <div class="dropcart__item-info">
                 <div class="dropcart__item-name">
-                  <a href="product-full.html"
-                    >Brandix Brake Kit BDX-750Z370-S</a
-                  >
+                  <a href="product-full.html">Brandix Brake Kit BDX-750Z370-S</a>
                 </div>
                 <div class="dropcart__item-meta">
                   <div class="dropcart__item-quantity">1</div>
@@ -406,14 +386,12 @@
             <li class="dropcart__item">
               <div class="dropcart__item-image">
                 <a href="product-full.html">
-                  <img src="images/products/product-5-70x70.jpg" alt="" />
+                  <img src="images/products/product-5-70x70.jpg" alt />
                 </a>
               </div>
               <div class="dropcart__item-info">
                 <div class="dropcart__item-name">
-                  <a href="product-full.html"
-                    >Twin Exhaust Pipe From Brandix Z54</a
-                  >
+                  <a href="product-full.html">Twin Exhaust Pipe From Brandix Z54</a>
                 </div>
                 <ul class="dropcart__item-features">
                   <li>Color: True Red</li>
@@ -498,32 +476,37 @@ export default {
     }
   },
   computed: {
-    carModels() { // All car models for selecting
+    carModels() {
+      // All car models for selecting
       const carModels = this.$store.getters.getCarModels
       return carModels
     },
 
-    carMakes() { // All car Makes for selecting
+    carMakes() {
+      // All car Makes for selecting
       const carMakes = this.$store.getters.getCarMakes
       return carMakes
     }
   },
   methods: {
-    closeWindow(event) { // Closing car selection when click outside
+    closeWindow(event) {
+      // Closing car selection when click outside
       if (this.carShow) {
-        this.carShow = false;
+        this.carShow = false
       }
     },
-    closeLogin() { // Closing Login Selection when click outside
+    closeLogin() {
+      // Closing Login Selection when click outside
       if (this.loginShow) {
         this.loginShow = false
       }
     },
     selectedCarInit() {
       const car = this.$store.getters.getSelectedCar
-      if(car) {
+      if (car) {
         this.selectedCarModel = car
-        this.selectedCarMake = car.carmake.name      } 
+        this.selectedCarMake = car.carmake.name
+      }
     },
     onChangeSelect(event) {
       // this.selectedCarModel = null
@@ -536,7 +519,8 @@ export default {
       })
       return n
     },
-    selectCarState() { // Dispatching car by changing model field
+    selectCarState() {
+      // Dispatching car by changing model field
       this.$store.dispatch('fetchSelectedCar', this.selectedCarModel)
       this.carShow = false
     },
@@ -547,9 +531,15 @@ export default {
       }
       if (this.username && this.password) {
         this.username = this.username.replace(/^[^a-z0-9]+$/i, '')
-        this.password = this.password.replace(/^[^a-z0-9\!\@\#\$\%\^\&\*\(\)]+$/i, '')
+        this.password = this.password.replace(
+          /^[^a-z0-9\!\@\#\$\%\^\&\*\(\)]+$/i,
+          ''
+        )
         this.$axios
-          .$post(`${endpointBase}/api/rest-auth/login/`, { username: this.username, password: this.password})
+          .$post(`${endpointBase}/api/rest-auth/login/`, {
+            username: this.username,
+            password: this.password
+          })
           .then(result => {
             this.$store.dispatch('login/fetchToken', result)
             this.loginShow = false
@@ -620,16 +610,15 @@ export default {
   color: $font-gray;
 }
 
-
 .indicator__content-car {
-    top: 100%;
-    position: absolute;
-    visibility: hidden;
-    transform-origin: top;
-    transform: rotateX(60deg);
-    opacity: 0;
-    transition: transform .2s,opacity .2s,visibility 0s .2s;
-    right: 0
+  top: 100%;
+  position: absolute;
+  visibility: hidden;
+  transform-origin: top;
+  transform: rotateX(60deg);
+  opacity: 0;
+  transition: transform 0.2s, opacity 0.2s, visibility 0s 0.2s;
+  right: 0;
 }
 .indicator__content--x {
   width: 1.4rem;
@@ -652,14 +641,14 @@ export default {
 
     cursor: pointer;
   }
-
 }
-.indicator--trigger--click.indicator--open-car .indicator__content-car,.indicator--trigger--hover:hover .indicator__content-car {
-    z-index: 1;
-    transition-delay: 0s,0s,0s;
-    opacity: 1;
-    visibility: visible;
-    transform: rotateX(0deg)
+.indicator--trigger--click.indicator--open-car .indicator__content-car,
+.indicator--trigger--hover:hover .indicator__content-car {
+  z-index: 1;
+  transition-delay: 0s, 0s, 0s;
+  opacity: 1;
+  visibility: visible;
+  transform: rotateX(0deg);
 }
 .login__error {
   color: $font-error;
