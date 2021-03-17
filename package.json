@@ -14,6 +14,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "js-cookie": "^2.2.1",
     "nuxt": "^2.0.0",
+    "sass": "^1.32.8",
     "uuid": "^8.1.0",
     "v-click-outside": "^3.0.1",
     "vodal": "^2.4.0",
